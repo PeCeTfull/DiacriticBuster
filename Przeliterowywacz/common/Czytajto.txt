@@ -1,0 +1,53 @@
+Przeliterowywacz #TUPODAJWERSJÊ
+Autor: PeCeT_full
+Strona WWW: http://www.komputermania.keed.pl/pl
+Copyright © by PeCeT_full 2014. Modyfikowanie oraz sprzedawanie tego programu jest surowo zabronione.
+Specjalne podziêkowania dla Marka Heatha za bibliotekê NAudio oraz Paw³a Firleja (http://pfco.de) za u¿yczenie g³osu do domyœlnego banku mowy.
+
+W razie wszelkich problemów czy te¿ w¹tpliwoœci proszê o kontakt.
+
+-------------
+Opis programu
+-------------
+
+Program ten, jak sama nazwa wskazuje, s³u¿y do przeliterowywania (czyt. wypowiadania ka¿dego znaku oddzielnie) na g³os oraz zapisywania jako plik dŸwiêkowy WAVE gotowej przemowy korzystaj¹c z dostêpnych plików odzwierciedlaj¹cych wymowê danego znaku. Zosta³ on napisany w jêzyku C# i korzysta z interfejsu WPF.
+
+Wymagania sprzêtowe i systemowe: procesor o mocy 1 GHz lub szybszy; 512 MB dostêpnej pamiêci RAM; min. 20 MB wolnego miejsca na dysku, w którym znajduje siê program; system operacyjny Windows Vista z dodatkiem SP2 lub nowszy z zainstalowan¹ platform¹ Microsoft .NET Framework 4.5.
+
+----------------
+Obs³uga programu
+----------------
+
+Przeliterowywacz jest intuicyjny w obs³udze oraz ma prosty interfejs. Po jego pierwszym uruchomieniu zostanie utworzony plik konfiguracyjny o nazwie Przeliterowywacz.ini, który w wiêkszoœci przypadków powinien siê pojawiæ w osobnym folderze programu znajduj¹cym siê w specjalnym katalogu VirtualStore u obecnie zalogowanego u¿ytkownika (choæ w przypadku wy³¹czenia funkcji Kontroli konta u¿ytkownika lub zainstalowania programu w zupe³nie innej lokalizacji zostanie on bezpoœrednio wprowadzony do swojego katalogu domowego). Nie jest zalecana jego rêczna modyfikacja, mo¿na go natomiast bez problemu usun¹æ, gdy¿ w przypadku jego braku zostanie utworzony nowy plik z domyœln¹ konfiguracj¹ o tej samej nazwie.
+
+Aby program by³ w stanie pracowaæ, nale¿y wprowadziæ jakiœ tekst do przeczytania po ka¿dym znaku osobno na g³os. W tym celu nale¿y klikn¹æ lewym przyciskiem myszy na obszar tekstu, a nastêpnie napisaæ (albo wkleiæ ze Schowka) to, co zamierzamy us³yszeæ (w przypadku braku miejsca na wpisywanie obszar ten bêdzie, wraz z oknem aplikacji, siê automatycznie rozszerza³). Je¿eli zamierzamy wy³¹cznie wys³uchaæ nasz przeliterowany tekst, to wystarczy klikn¹æ przycisk „Przeliteruj” (pamiêtajmy jednak, i¿ podczas pracy nie mo¿na zmieniaæ opcji programu), natomiast gdy potrzebujemy ca³oœci jako nagrania, powinniœmy klikn¹æ przycisk „Nagraj”, a nastêpnie wskazaæ nazwê i miejsce, gdzie plik dŸwiêkowy ma byæ zapisany – po pomyœlnie wykonanej operacji powinien na kilka sekund ukazaæ siê na dole okna g³ównego napis: „Zapisano.”
+
+--------------
+Opcje programu
+--------------
+
+Przeliterowywacz pozwala na zmianê nastêpuj¹cych ustawieñ: 
+
+* Uwzglêdnij znaki specjalne i interpunkcyjne (np. przecinek, wykrzyknik, gwiazdka itp.) – pozostawienie tej opcji zaznaczonej sprawi, ¿e w ka¿dym wypowiadanym tekœcie bêd¹ uwzglêdnianie nastêpuj¹ce znaki specjalne: . , : ; ! ? ' " \ / % * | < > =, natomiast jej odchaczenie spowoduje ich pominiêcie w trakcie czytania. Nale¿y pamiêtaæ jednak, i¿ ka¿dy z tych znaków odpowiada nazwie pliku innej ni¿ jego symbol, a zatem: 
+. – kropka.wav, 
+, – przecinek.wav, 
+: – dwukropek.wav, 
+; – srednik.wav, 
+! – wykrzyknik.wav, 
+? – pytajnik.wav, 
+' – apostrof.wav, 
+" – cudzyslow.wav, 
+\ – ukosnik_wsteczny.wav, 
+/ – ukosnik.wav, 
+% – procent.wav, 
+* – gwiazdka.wav, 
+| – kreska_pionowa.wav, 
+< – znak_mniejszosci.wav, 
+> – znak_wiekszosci.wav, 
+= – znak_rownosci.wav.
+
+* Schemat kolorów wprowadzania tekstu – s³u¿y do zmiany wygl¹du obszaru przeznaczonego do wprowadzania tekstu do odczytania. Do wyboru dostêpne s¹ trzy schematy: standardowy, czarno-bia³y oraz hakerski.
+
+* Bank mowy – tutaj mo¿na wybraæ z listy dowolny bank mowy, czyli zestaw zawieraj¹cy pliki o rozszerzeniu *.wav z odrêbn¹ wymow¹ poszczególnych znaków. Lista ta tworzona jest na podstawie znalezionych przez aplikacjê podfolderów z plikami w folderze Banki umieszczonym w katalogu domowym programu, gdzie podfolderem jest bank o danej nazwie, natomiast samym bankiem domyœlnym s¹ wszystkie pliki dŸwiêkowe znajduj¹ce siê w katalogu g³ównym folderu Banki.
+
+Je¿eli zmiany te maj¹ byæ uwzglêdniane po ka¿dym nastêpnym uruchomieniu Przeliterowywacza, nale¿y nacisn¹æ przycisk „Zapisz ustawienia” jeszcze przed jego wy³¹czeniem.
