@@ -224,12 +224,36 @@ Special thanks to Mark Heath for NAudio library and Paweł Firlej
     <value>Sound files (*.wav)|*.wav|All files|*.*</value>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>http://www.komputermania.keed.pl/</value>
+    <value>http://www.komputermania.pl.eu.org/</value>
   </data>
   <data name="DeriveFromDefaultSpeechbank" xml:space="preserve">
     <value>Derive files from the default speech bank if such are missing in the selected one</value>
   </data>
   <data name="CannotConcatenateDifferentFormatsException" xml:space="preserve">
     <value>Cannot concatenate sound files that don't share the same format!</value>
+  </data>
+  <data name="BanksFolderNotFound" xml:space="preserve">
+    <value>"Banki" FOLDER NOT FOUND</value>
+  </data>
+  <data name="SAPI5Synthesis" xml:space="preserve">
+    <value>SAPI5 synthesis</value>
+  </data>
+  <data name="SAPI5Voice" xml:space="preserve">
+    <value>SAPI5 voice: </value>
+  </data>
+  <data name="SAPI5VoiceMissingMessage" xml:space="preserve">
+    <value>The voice "{0}" is unavailable, therefore program will read the text by means of the default speech synthesizer.</value>
+  </data>
+  <data name="SAPI5VoiceNotFoundMessage" xml:space="preserve">
+    <value>The SAPI5 voice called "{0}" has not been found, default setting has been restored.</value>
+  </data>
+  <data name="Speechbanks" xml:space="preserve">
+    <value>Speech banks</value>
+  </data>
+  <data name="SpeechbankSettings" xml:space="preserve">
+    <value>Speech bank settings</value>
+  </data>
+  <data name="Use" xml:space="preserve">
+    <value>Use</value>
   </data>
 </root>

@@ -94,6 +94,15 @@ namespace Przeliterowywacz.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Banki&quot; FOLDER NOT FOUND.
+        /// </summary>
+        public static string BanksFolderNotFound {
+            get {
+                return ResourceManager.GetString("BanksFolderNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Black and white.
         /// </summary>
         public static string BlackAndWhite {
@@ -295,6 +304,42 @@ namespace Przeliterowywacz.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SAPI5 synthesis.
+        /// </summary>
+        public static string SAPI5Synthesis {
+            get {
+                return ResourceManager.GetString("SAPI5Synthesis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAPI5 voice: .
+        /// </summary>
+        public static string SAPI5Voice {
+            get {
+                return ResourceManager.GetString("SAPI5Voice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The voice &quot;{0}&quot; is unavailable, therefore program will read the text by means of the default speech synthesizer..
+        /// </summary>
+        public static string SAPI5VoiceMissingMessage {
+            get {
+                return ResourceManager.GetString("SAPI5VoiceMissingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SAPI5 voice called &quot;{0}&quot; has not been found, default setting has been restored..
+        /// </summary>
+        public static string SAPI5VoiceNotFoundMessage {
+            get {
+                return ResourceManager.GetString("SAPI5VoiceNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saved..
         /// </summary>
         public static string SavedStatus {
@@ -327,6 +372,24 @@ namespace Przeliterowywacz.Properties {
         public static string SpeechbankFolderNotFoundMessage {
             get {
                 return ResourceManager.GetString("SpeechbankFolderNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speech banks.
+        /// </summary>
+        public static string Speechbanks {
+            get {
+                return ResourceManager.GetString("Speechbanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speech bank settings.
+        /// </summary>
+        public static string SpeechbankSettings {
+            get {
+                return ResourceManager.GetString("SpeechbankSettings", resourceCulture);
             }
         }
         
@@ -367,6 +430,15 @@ namespace Przeliterowywacz.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use.
+        /// </summary>
+        public static string Use {
+            get {
+                return ResourceManager.GetString("Use", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file has not been saved successfully because one or more files required to play have not been found..
         /// </summary>
         public static string WAVEFilesMissingMessage {
@@ -376,7 +448,7 @@ namespace Przeliterowywacz.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://www.komputermania.keed.pl/.
+        ///   Looks up a localized string similar to http://www.komputermania.pl.eu.org/.
         /// </summary>
         public static string Website {
             get {

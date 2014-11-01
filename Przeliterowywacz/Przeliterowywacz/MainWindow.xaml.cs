@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Windows.Markup;
 using NAudio;
 using NAudio.Wave;
+using System.Speech.Synthesis;
 
 namespace Przeliterowywacz
 {
@@ -31,8 +32,10 @@ namespace Przeliterowywacz
         // Konfiguracja domyślna
         public bool includeDiacriticalChars = true;
         public bool deriveFromDefaultSpeechbank = false;
+        public bool useSapi = false;
         public Int16 inputScheme = 0;
         public string currentSpeechbank = "<default>";
+        public string currentSapi = "Microsoft Anna";
         public string currentLanguage = "en";
 
         public MainWindow()
@@ -54,6 +57,8 @@ namespace Przeliterowywacz
                         includeDiacriticalChars = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(24)));
                     else if (srLine.Contains("DeriveFromDefaultSpeechbank="))
                         deriveFromDefaultSpeechbank = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(28)));
+                    else if (srLine.Contains("UseSAPI5="))
+                        useSapi = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(9)));
                     else if (srLine.Contains("InputScheme="))
                         inputScheme = Convert.ToInt16(srLine.Substring(12));
                     else if (srLine.Contains("Speechbank="))
@@ -62,6 +67,8 @@ namespace Przeliterowywacz
                         if (currentSpeechbank == "<default>")
                             currentSpeechbank = Properties.Resources.Default;
                     }
+                    else if (srLine.Contains("SAPI5Voice="))
+                        currentSapi = srLine.Substring(11);
                 }
                 sr.Close();
             }
@@ -70,7 +77,7 @@ namespace Przeliterowywacz
                 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(currentLanguage);
                 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(currentLanguage);
                 FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
-                //var sw = new StreamWriter(new FileStream(configFileName, FileMode.CreateNew), Encoding.GetEncoding(1250));
+                //var sw = new StreamWriter(new FileStream(configFileName, FileMode.CreateNew), Encoding.UTF8);
                 //sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[Przeliterowywacz]\r\nLanguage=en\r\nIncludeDiacriticalChars=1\r\nDeriveFromDefaultSpeechbank=0\r\nInputScheme=0\r\nSpeechbank=<default>"); // Spisywanie konfiguracji domyślnej na plik o stronie kodowej Windows-1250
                 //sw.Close();
             }
@@ -96,6 +103,7 @@ namespace Przeliterowywacz
         OptionsWindow ow;
         AboutWindow aw;
         Thread T1;
+        SpeechSynthesizer sapi = new SpeechSynthesizer();
 
         public static void Concatenate(string outputFile, IEnumerable<string> sourceFiles)
         {
@@ -187,6 +195,14 @@ namespace Przeliterowywacz
             SoundPlayer letterFile;
             try
             {
+                sapi.SelectVoice(currentSapi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Properties.Resources.SAPI5VoiceMissingMessage, currentSapi), Properties.Resources.ErrorCaption, MessageBoxButton.OK, MessageBoxImage.Hand);
+            }
+            try
+            {
                 for (int i = 0; i < toBeSpelled.Length; i++)
                 {
                     waveFileName = specifyFileName(i, toBeSpelled);
@@ -194,7 +210,9 @@ namespace Przeliterowywacz
                         break;
                     if (waveFileName != null)
                     {
-                        if (!deriveFromDefaultSpeechbank)
+                        if (useSapi)
+                            sapi.Speak(toBeSpelled.Substring(i, 1));
+                        else if (!deriveFromDefaultSpeechbank)
                         {
                             letterFile = new SoundPlayer((string)waveFileName);
                             letterFile.PlaySync();
@@ -257,7 +275,7 @@ namespace Przeliterowywacz
             }
             if (isQuiet)
             {
-                ow = new OptionsWindow(configFileName, includeDiacriticalChars, deriveFromDefaultSpeechbank, currentSpeechbank, currentLanguage);
+                ow = new OptionsWindow(configFileName, includeDiacriticalChars, deriveFromDefaultSpeechbank, useSapi, currentSpeechbank, currentSapi, currentLanguage);
                 ow.Show();
             }
             else
@@ -281,33 +299,44 @@ namespace Przeliterowywacz
                     List<string> filesToPlayList = new List<string>();
                     bool wasFailed = false;
 
-                    for (int i = 0; i < textToRecord.Length; i++)
-                    {
-                        waveFileName = specifyFileName(i, textToRecord);
-                        if (waveFileName != null)
+                    if (!useSapi)
+	                {
+                        for (int i = 0; i < textToRecord.Length; i++)
                         {
-                            if (File.Exists(waveFileName))
-                                filesToPlayList.Add(waveFileName);
-                            else
+                            waveFileName = specifyFileName(i, textToRecord);
+                            if (waveFileName != null)
                             {
-                                string actualSpeechbank = currentSpeechbank;
-                                currentSpeechbank = Properties.Resources.Default;
-                                waveFileName = specifyFileName(i, textToRecord);
-                                currentSpeechbank = actualSpeechbank;
-                                if (File.Exists(waveFileName) && deriveFromDefaultSpeechbank)
+                                if (File.Exists(waveFileName))
                                     filesToPlayList.Add(waveFileName);
                                 else
                                 {
-                                    wasFailed = true;
-                                    break;
+                                    string actualSpeechbank = currentSpeechbank;
+                                    currentSpeechbank = Properties.Resources.Default;
+                                    waveFileName = specifyFileName(i, textToRecord);
+                                    currentSpeechbank = actualSpeechbank;
+                                    if (File.Exists(waveFileName) && deriveFromDefaultSpeechbank)
+                                        filesToPlayList.Add(waveFileName);
+                                    else
+                                    {
+                                        wasFailed = true;
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
+                    else //DO ZIMPLEMENTOWANIA: Zapisywanie nagrań SAPI5
+                    {
+                        sapi.SetOutputToWaveFile(FD.FileName);
+                        for (int i = 0; i < textToRecord.Length; i++)
+                            sapi.Speak(textToRecord.Substring(i, 1));
+                        sapi.SetOutputToDefaultAudioDevice();
+                    }
 
                     if (!wasFailed)
                     {
-                        Concatenate(FD.FileName, filesToPlayList);
+                        if (!useSapi)
+                            Concatenate(FD.FileName, filesToPlayList);
                         if (File.Exists(FD.FileName))
                         {
                             StatusLabel.Content = Properties.Resources.SavedStatus;

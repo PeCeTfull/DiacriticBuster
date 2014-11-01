@@ -127,7 +127,7 @@
     <value>Fehler</value>
   </data>
   <data name="FirstInput" xml:space="preserve">
-    <value>Geben Sie hier einen Text zu verlesen an</value>
+    <value>Geben Sie hier einen Text zu verlesen ein</value>
   </data>
   <data name="HaltedDueToFileMessage" xml:space="preserve">
     <value>Vorgang abgebrochen weil das Problem mit der folgenden Klangdatei aufgetreten hat: {0}{1}. Bitte stellen Sie sicher, dass die Datei vorhanden ist.</value>
@@ -157,7 +157,7 @@
     <value>Sprachdatenbank: </value>
   </data>
   <data name="SpeechbankFolderNotFoundMessage" xml:space="preserve">
-    <value>Der Sprachdatenbank-Folder namens "{0}" hat nicht gefunden worden, voreingestellte Einstellung hat wiedergeherstellt worden.</value>
+    <value>Der Sprachdatenbank-Folder namens „{0}” hat nicht gefunden worden, voreingestellte Einstellung hat wiedergeherstellt worden.</value>
   </data>
   <data name="SpellButton" xml:space="preserve">
     <value>_Buchstabieren</value>
@@ -225,7 +225,7 @@ leihen.</value>
     <value>Klangdateien (*.wav)|*.wav|Alle Dateien|*.*</value>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>http://www.komputermania.keed.pl/de</value>
+    <value>http://www.komputermania.pl.eu.org/de</value>
   </data>
   <data name="DeriveFromDefaultSpeechbank" xml:space="preserve">
     <value>Dateien aus dem voreingestellten Sprachdatenbank ableiten wenn diejenigen werden 
@@ -233,5 +233,29 @@ im gewählten fehlt</value>
   </data>
   <data name="CannotConcatenateDifferentFormatsException" xml:space="preserve">
     <value>Kann nicht Klangdateien, die nicht das gleiche Format haben verketten!</value>
+  </data>
+  <data name="BanksFolderNotFound" xml:space="preserve">
+    <value>„Banki”-FOLDER NICHT GEFUNDEN</value>
+  </data>
+  <data name="SAPI5Synthesis" xml:space="preserve">
+    <value>SAPI5-Synthese</value>
+  </data>
+  <data name="SAPI5Voice" xml:space="preserve">
+    <value>SAPI5-Stimme: </value>
+  </data>
+  <data name="SAPI5VoiceMissingMessage" xml:space="preserve">
+    <value>Die Stimme "{0}" ist nicht verfügbar, demnach wird das Programm den Text mittels des voreingestellten Sprachsynthesizers gelesen.</value>
+  </data>
+  <data name="SAPI5VoiceNotFoundMessage" xml:space="preserve">
+    <value>Die SAPI5-Stimme namens „{0}” hat nicht gefunden worden, voreingestellte Einstellung hat wiedergeherstellt worden.</value>
+  </data>
+  <data name="Speechbanks" xml:space="preserve">
+    <value>Sprachdatenbanken</value>
+  </data>
+  <data name="SpeechbankSettings" xml:space="preserve">
+    <value>Sprachdatenbanken-Einstellungen</value>
+  </data>
+  <data name="Use" xml:space="preserve">
+    <value>Benutzen</value>
   </data>
 </root>

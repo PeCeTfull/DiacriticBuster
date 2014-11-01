@@ -215,12 +215,36 @@ banku mowy.</value>
     <value>Pliki dźwiękowe (*.wav)|*.wav|Wszystkie pliki|*.*</value>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>http://www.komputermania.keed.pl/pl</value>
+    <value>http://www.komputermania.pl.eu.org/pl</value>
   </data>
   <data name="DeriveFromDefaultSpeechbank" xml:space="preserve">
     <value>Zapożyczaj pliki z domyślnego banku mowy, jeśli takowych brakuje w wybranym</value>
   </data>
   <data name="CannotConcatenateDifferentFormatsException" xml:space="preserve">
     <value>Nie można powiązać plików dźwiękowych nie będących tego samego formatu!</value>
+  </data>
+  <data name="BanksFolderNotFound" xml:space="preserve">
+    <value>NIE ZNALEZIONO FOLDERU „Banki”</value>
+  </data>
+  <data name="SAPI5Synthesis" xml:space="preserve">
+    <value>Syntezy SAPI5</value>
+  </data>
+  <data name="SAPI5Voice" xml:space="preserve">
+    <value>Głos SAPI5: </value>
+  </data>
+  <data name="SAPI5VoiceMissingMessage" xml:space="preserve">
+    <value>Głos „{0}” jest niedostępny, program zatem odczyta tekst za pomocą domyślnego syntezatora mowy.</value>
+  </data>
+  <data name="SAPI5VoiceNotFoundMessage" xml:space="preserve">
+    <value>Głos SAPI5 o nazwie „{0}” nie został znaleziony, przywrócono ustawienie domyślne.</value>
+  </data>
+  <data name="Speechbanks" xml:space="preserve">
+    <value>Banków mowy</value>
+  </data>
+  <data name="SpeechbankSettings" xml:space="preserve">
+    <value>Ustawienia banków mowy</value>
+  </data>
+  <data name="Use" xml:space="preserve">
+    <value>Użyj</value>
   </data>
 </root>

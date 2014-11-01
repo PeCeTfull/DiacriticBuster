@@ -1,6 +1,11 @@
 The changelog of Przeliterowywacz
 
-1.1.x.x: 
+1.2 Beta 1: 
+* changed the website URL, 
+* correction of a string in German translation (from "Geben Sie hier einen Text zu verlesen an" to "Geben Sie hier einen Text zu verlesen ein"), 
+* SAPI5 speech synthesizers support (both play and record functions are available).
+
+1.1.5369.32343: 
 * typo in "IncludeDiactricalChars" inside configuration file – changed to "IncludeDiacriticalChars", 
 * ability to check for NAudio.dll in the program directory, 
 * localisation feature, added English and German support, 

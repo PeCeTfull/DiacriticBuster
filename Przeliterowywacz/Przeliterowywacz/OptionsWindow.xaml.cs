@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Speech.Synthesis;
 
 namespace Przeliterowywacz
 {
@@ -24,19 +25,23 @@ namespace Przeliterowywacz
         string configFileName;
         bool checkingLanguage;
 
-        public OptionsWindow(string configFileName, bool diacriticalOption, bool derivativeOption, string speechbankName, string languageCode)
+        public OptionsWindow(string configFileName, bool diacriticalOption, bool derivativeOption, bool sapiOption, string speechbankName, string sapiName, string languageCode)
         {
             this.configFileName = configFileName;
             InitializeComponent();
             CheckBox1.IsChecked = diacriticalOption;
             CheckBox2.IsChecked = derivativeOption;
+            if (sapiOption)
+                RadioButton2.IsChecked = sapiOption;
+            else
+                RadioButton1.IsChecked = !sapiOption;
             // Wyszukuje wszystkie podfoldery w folderze Banki i dodaje znalezione elementy do listy dostępnych banków mowy
             ComboBoxItem cbi;
             string[] folderNames = Directory.GetDirectories(AppDomain.CurrentDomain.BaseDirectory + "Banki\\");
             for (int i = 0; i < folderNames.Length; i++)
             {
                 string[] folderNameStructure = folderNames[i].Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
-                string folderName = "NIE ZNALEZIONO FOLDERU „Banki”";
+                string folderName = Properties.Resources.BanksFolderNotFound;
                 for (int j = 0; j < folderNameStructure.Length - 1; j++)
                     if (folderNameStructure[j] == "Banki")
                     {
@@ -57,6 +62,26 @@ namespace Przeliterowywacz
                 {
                     ComboBox1.SelectedIndex = 0;
                     MessageBox.Show(String.Format(Properties.Resources.SpeechbankFolderNotFoundMessage, speechbankName), main.Title, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+            // Pobieranie z systemu obecnie zainstalowanych syntezatorów mowy SAPI5
+            var allInstalledVoices = new SpeechSynthesizer().GetInstalledVoices();
+            foreach (var voice in allInstalledVoices)
+            {
+                cbi = new ComboBoxItem();
+                cbi.Content = voice.VoiceInfo.Name;
+                ComboBox3.Items.Add(cbi);
+            }
+            // Sprawdza, czy ostatnio wybrany syntezator SAPI5 dalej występuje w systemie
+            for (int i = 0; i < ComboBox3.Items.Count; i++)
+            {
+                ComboBox3.SelectedIndex = i;
+                if (ComboBox3.SelectedItem.ToString().Substring(38) == sapiName)
+                    break;
+                if (i == ComboBox3.Items.Count - 1)
+                {
+                    ComboBox3.SelectedIndex = 0;
+                    MessageBox.Show(String.Format(Properties.Resources.SAPI5VoiceNotFoundMessage, sapiName), main.Title, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
             // Sprawdza, jaki jest obecnie używany język interfejsu
@@ -99,6 +124,16 @@ namespace Przeliterowywacz
             main.deriveFromDefaultSpeechbank = false;
         }
 
+        private void RadioButton1_Checked(object sender, RoutedEventArgs e)
+        {
+            main.useSapi = false;
+        }
+
+        private void RadioButton2_Checked(object sender, RoutedEventArgs e)
+        {
+            main.useSapi = true;
+        }
+
         private void StyleButton1_Click(object sender, RoutedEventArgs e)
         {
             main.TextBox1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7FFFFFC0"));
@@ -125,6 +160,11 @@ namespace Przeliterowywacz
             main.currentSpeechbank = ComboBox1.SelectedItem.ToString().Substring(38);
         }
 
+        private void ComboBox3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            main.currentSapi = ComboBox3.SelectedItem.ToString().Substring(38);
+        }
+
         private void ComboBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string languageUsedBefore = main.currentLanguage;
@@ -143,8 +183,8 @@ namespace Przeliterowywacz
             string speechbank = main.currentSpeechbank;
             if (speechbank == Properties.Resources.Default)
                 speechbank = "<default>";
-            var sw = new StreamWriter(new FileStream(configFileName, FileMode.Create), Encoding.GetEncoding(1250));
-            sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[Przeliterowywacz]\r\nLanguage=" + main.currentLanguage + "\r\nIncludeDiacriticalChars=" + Convert.ToInt16(main.includeDiacriticalChars) + "\r\nDeriveFromDefaultSpeechbank=" + Convert.ToInt16(main.deriveFromDefaultSpeechbank) + "\r\nInputScheme=" + main.inputScheme + "\r\nSpeechbank=" + speechbank); // Spisywanie konfiguracji domyślnej na plik o stronie kodowej Windows-1250
+            var sw = new StreamWriter(new FileStream(configFileName, FileMode.Create), Encoding.UTF8);
+            sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[Przeliterowywacz]\r\nLanguage=" + main.currentLanguage + "\r\nIncludeDiacriticalChars=" + Convert.ToInt16(main.includeDiacriticalChars) + "\r\nDeriveFromDefaultSpeechbank=" + Convert.ToInt16(main.deriveFromDefaultSpeechbank) + "\r\nUseSAPI5=" + Convert.ToInt16(main.useSapi) + "\r\nInputScheme=" + main.inputScheme + "\r\nSpeechbank=" + speechbank + "\r\nSAPI5Voice=" + main.currentSapi); // Spisywanie konfiguracji domyślnej na plik o stronie kodowej UTF-8 (poprzednio Windows-1250 - Encoding.GetEncoding(1250))
             sw.Close();
         }
     }
