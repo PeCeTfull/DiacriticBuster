@@ -84,8 +84,8 @@ namespace Przeliterowywacz.Properties {
         ///Author: {2}
         ///{3}
         ///Modifying and selling this program is strictly prohibited.
-        ///Special thanks to Mark Heath for NAudio library and Paweł Firlej 
-        ///(http://pfco.de) for lending the voice for the default speech bank..
+        ///Special thanks to Mark Heath for NAudio library and 
+        ///pfcode for lending the voice for the default speech bank..
         /// </summary>
         public static string AboutContent {
             get {
@@ -136,6 +136,15 @@ namespace Przeliterowywacz.Properties {
         public static string ChangedLanguageMessage {
             get {
                 return ResourceManager.GetString("ChangedLanguageMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Common settings.
+        /// </summary>
+        public static string CommonSettings {
+            get {
+                return ResourceManager.GetString("CommonSettings", resourceCulture);
             }
         }
         
@@ -304,6 +313,15 @@ namespace Przeliterowywacz.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Play.
+        /// </summary>
+        public static string Play {
+            get {
+                return ResourceManager.GetString("Play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rate: .
         /// </summary>
         public static string Rate {
@@ -313,11 +331,20 @@ namespace Przeliterowywacz.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Read all zero characters as the letter &apos;o&apos;.
+        /// </summary>
+        public static string ReadZeroAsOLetter {
+            get {
+                return ResourceManager.GetString("ReadZeroAsOLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Record.
         /// </summary>
-        public static string RecordButton {
+        public static string Record {
             get {
-                return ResourceManager.GetString("RecordButton", resourceCulture);
+                return ResourceManager.GetString("Record", resourceCulture);
             }
         }
         
@@ -453,6 +480,15 @@ namespace Przeliterowywacz.Properties {
         public static string StillWorkingMessage {
             get {
                 return ResourceManager.GetString("StillWorkingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S_top.
+        /// </summary>
+        public static string StopButton {
+            get {
+                return ResourceManager.GetString("StopButton", resourceCulture);
             }
         }
         

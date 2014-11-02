@@ -13,10 +13,17 @@
     </Window.Background>
     <Grid VerticalAlignment="Stretch">
         <TextBox Name="TextBox1" HorizontalAlignment="Left" Margin="10,10,0,43" TextWrapping="Wrap" Text="{x:Static p:Resources.FirstInput}" VerticalAlignment="Top" Width="487" Background="#7FFFFFC0" Foreground="White" GotMouseCapture="TextBox1_GotMouseCapture" />
-        <Button Name="Button1" Content="{x:Static p:Resources.SpellButton}" HorizontalAlignment="Left" Margin="10,40,0,11" VerticalAlignment="Bottom" Width="85" Click="Button1_Click">
+        <Button Name="Button1" Content="{x:Static p:Resources.SpellButton}" HorizontalAlignment="Left" Margin="10,40,0,11" VerticalAlignment="Bottom" Width="85">
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.Click">
                     <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
+                                    <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
+                                </BooleanAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
                         <BeginStoryboard>
                             <Storyboard TargetProperty="Background.GradientStops[0].Color">
                                 <ColorAnimation From="#FFF3F3F3" To="White" Duration="0:0:1"
@@ -44,8 +51,14 @@
                     </EventTrigger.Actions>
                 </EventTrigger>
             </Button.Triggers>
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="MenuItem1" Header="{x:Static p:Resources.Play}" Click="MenuItem1_Click"/>
+                    <MenuItem Name="MenuItem2" Header="{x:Static p:Resources.Record}" Click="MenuItem2_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
         </Button>
-        <Button Name="Button3" Content="{x:Static p:Resources.RecordButton}" HorizontalAlignment="Left" Margin="100,40,0,11" VerticalAlignment="Bottom" Width="85" Click="Button3_Click">
+        <Button Name="Button3" Content="{x:Static p:Resources.StopButton}" HorizontalAlignment="Left" Margin="100,40,0,11" VerticalAlignment="Bottom" Width="85" Click="Button3_Click">
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.Click">
                     <EventTrigger.Actions>

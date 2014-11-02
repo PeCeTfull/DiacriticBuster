@@ -156,7 +156,7 @@
   <data name="OptionsCaption" xml:space="preserve">
     <value>Opcje programu</value>
   </data>
-  <data name="RecordButton" xml:space="preserve">
+  <data name="Record" xml:space="preserve">
     <value>_Nagraj</value>
   </data>
   <data name="SavedStatus" xml:space="preserve">
@@ -198,9 +198,8 @@ Wersja: {1}
 Autor: {2}
 {3}
 Modyfikowanie oraz sprzedawanie tego programu jest surowo zabronione.
-Specjalne podziękowania dla Marka Heatha za bibliotekę NAudio 
-oraz Pawła Firleja (http://pfco.de) za użyczenie głosu do domyślnego 
-banku mowy.</value>
+Specjalne podziękowania dla Marka Heatha za bibliotekę NAudio oraz 
+użytkownika pfcode za użyczenie głosu do domyślnego banku mowy.</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Język interfejsu: </value>
@@ -245,7 +244,7 @@ banku mowy.</value>
     <value>Ustawienia banków mowy</value>
   </data>
   <data name="Use" xml:space="preserve">
-    <value>Użyj</value>
+    <value>Używaj</value>
   </data>
   <data name="SAPI5Error" xml:space="preserve">
     <value>Błąd SAPI5: </value>
@@ -261,5 +260,17 @@ banku mowy.</value>
   </data>
   <data name="Volume" xml:space="preserve">
     <value>Głośność: </value>
+  </data>
+  <data name="CommonSettings" xml:space="preserve">
+    <value>Ustawienia wspólne</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>_Odtwórz</value>
+  </data>
+  <data name="ReadZeroAsOLetter" xml:space="preserve">
+    <value>Czytaj wszystkie znaki zero jako literę „o”</value>
+  </data>
+  <data name="StopButton" xml:space="preserve">
+    <value>_Zatrzymaj</value>
   </data>
 </root>

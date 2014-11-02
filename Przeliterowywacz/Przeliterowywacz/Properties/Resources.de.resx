@@ -144,8 +144,8 @@
   <data name="OptionsButton" xml:space="preserve">
     <value>_Optionen</value>
   </data>
-  <data name="RecordButton" xml:space="preserve">
-    <value>_Aufnehmen</value>
+  <data name="Record" xml:space="preserve">
+    <value>Auf_nehmen</value>
   </data>
   <data name="SavedStatus" xml:space="preserve">
     <value>Gespeichert.</value>
@@ -198,9 +198,8 @@ Version: {1}
 Autor: {2}
 {3}
 Änderung und Verkauf dieses Programm ist streng verboten.
-Besonderen Dank an Mark Heath für NAudio-Bibliothek und Paweł Firlej 
-(http://pfco.de) für die Stimme für der voreingestellten Sprachdatenbank 
-leihen.</value>
+Besonderen Dank an Mark Heath für NAudio-Bibliothek und pfcode 
+für die Stimme für der voreingestellten Sprachdatenbank leihen.</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Schnittstellensprache: </value>
@@ -228,8 +227,7 @@ leihen.</value>
     <value>http://www.komputermania.pl.eu.org/de</value>
   </data>
   <data name="DeriveFromDefaultSpeechbank" xml:space="preserve">
-    <value>Dateien aus dem voreingestellten Sprachdatenbank ableiten wenn diejenigen werden 
-im gewählten fehlt</value>
+    <value>Dateien aus dem voreingestellten Sprachdatenbank ableiten wenn diejenigen werden im gewählten fehlt</value>
   </data>
   <data name="CannotConcatenateDifferentFormatsException" xml:space="preserve">
     <value>Kann nicht Klangdateien, die nicht das gleiche Format haben verketten!</value>
@@ -272,5 +270,17 @@ im gewählten fehlt</value>
   </data>
   <data name="Volume" xml:space="preserve">
     <value>Lautstärke: </value>
+  </data>
+  <data name="CommonSettings" xml:space="preserve">
+    <value>Gemeinsame Einstellungen</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>_Abspielen</value>
+  </data>
+  <data name="ReadZeroAsOLetter" xml:space="preserve">
+    <value>Alle Nullzeichen als der Buchstabe „o” lesen</value>
+  </data>
+  <data name="StopButton" xml:space="preserve">
+    <value>_Stoppen</value>
   </data>
 </root>

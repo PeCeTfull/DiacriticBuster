@@ -33,6 +33,7 @@ namespace Przeliterowywacz
         public bool includeDiacriticalChars = true;
         public bool deriveFromDefaultSpeechbank = false;
         public bool useSapi = false;
+        public bool readZeroAsO = false;
         public Int16 sapiRate = 0;
         public Int16 sapiVolume = 100;
         public Int16 inputScheme = 0;
@@ -61,6 +62,8 @@ namespace Przeliterowywacz
                         deriveFromDefaultSpeechbank = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(28)));
                     else if (srLine.Contains("UseSAPI5="))
                         useSapi = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(9)));
+                    else if (srLine.Contains("ReadZeroAsO="))
+                        readZeroAsO = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(12)));
                     else if (srLine.Contains("Rate="))
                     {
                         sapiRate = Convert.ToInt16(srLine.Substring(5));
@@ -112,7 +115,7 @@ namespace Przeliterowywacz
             }
             if (!File.Exists("NAudio.dll")) // Sprawdzanie, czy w katalogu programu jest biblioteka NAudio.dll
             {
-                Button3.IsEnabled = false;
+                MenuItem2.IsEnabled = false;
                 MessageBox.Show(Properties.Resources.NAudioNotFoundMessage, MainSpeechWindow.Title, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
@@ -162,6 +165,8 @@ namespace Przeliterowywacz
                 fileName += currentSpeechbank + '\\';
             if (toBeSaid.Substring(i, 1) == " ")
                 fileName = null;
+            else if (toBeSaid.Substring(i, 1) == "0" && readZeroAsO)
+                fileName += "o.wav";
             else if (toBeSaid.Substring(i, 1) == "." || toBeSaid.Substring(i, 1) == "," || toBeSaid.Substring(i, 1) == ":" || toBeSaid.Substring(i, 1) == ";" || toBeSaid.Substring(i, 1) == "!" || toBeSaid.Substring(i, 1) == "?" || toBeSaid.Substring(i, 1) == "'" || toBeSaid.Substring(i, 1) == "\"" || toBeSaid.Substring(i, 1) == "\\" || toBeSaid.Substring(i, 1) == "/" || toBeSaid.Substring(i, 1) == "%" || toBeSaid.Substring(i, 1) == "*" || toBeSaid.Substring(i, 1) == "|" || toBeSaid.Substring(i, 1) == "<" || toBeSaid.Substring(i, 1) == ">" || toBeSaid.Substring(i, 1) == "=")
             {
                 if (includeDiacriticalChars)
@@ -207,6 +212,15 @@ namespace Przeliterowywacz
             return fileName;
         }
 
+        public void spellAsSapi(int i, string toBeSaid)
+        {
+            string letterToSpeak = toBeSaid.Substring(i, 1);
+            if (letterToSpeak == "0" && readZeroAsO)
+                sapi.Speak("o");
+            else
+                sapi.Speak(letterToSpeak);
+        }
+
         void F1(object txt)
         {
             string toBeSpelled = (string)txt, waveFileName = "";
@@ -231,7 +245,20 @@ namespace Przeliterowywacz
                     if (waveFileName != null)
                     {
                         if (useSapi)
-                            sapi.Speak(toBeSpelled.Substring(i, 1));
+                        {
+                            try 
+	                        {
+                                spellAsSapi(i, toBeSpelled);
+	                        }
+	                        catch (ArgumentNullException)
+	                        {
+                                continue;
+	                        }
+                            catch (Exception)
+                            {
+                                throw;
+                            }
+                        }
                         else if (!deriveFromDefaultSpeechbank)
                         {
                             letterFile = new SoundPlayer((string)waveFileName);
@@ -260,7 +287,7 @@ namespace Przeliterowywacz
             isQuiet = true;
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private void MenuItem1_Click(object sender, RoutedEventArgs e)
         {
             if (!firstTimeRunning)
             {
@@ -270,6 +297,7 @@ namespace Przeliterowywacz
                         ow.Close();
                     string textToSpell = TextBox1.Text;
                     isQuiet = false;
+                    Button3.IsEnabled = true;
                     T1 = new Thread(F1);
                     T1.Start(textToSpell);
                 }
@@ -298,14 +326,14 @@ namespace Przeliterowywacz
             }
             if (isQuiet)
             {
-                ow = new OptionsWindow(configFileName, includeDiacriticalChars, deriveFromDefaultSpeechbank, useSapi, sapiRate, sapiVolume, currentSpeechbank, currentSapi, currentLanguage);
+                ow = new OptionsWindow(configFileName, includeDiacriticalChars, deriveFromDefaultSpeechbank, useSapi, readZeroAsO, sapiRate, sapiVolume, currentSpeechbank, currentSapi, currentLanguage);
                 ow.Show();
             }
             else
                 MessageBox.Show(Properties.Resources.IsBusyMessage, MainSpeechWindow.Title, MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
-        private async void Button3_Click(object sender, RoutedEventArgs e)
+        private async void MenuItem2_Click(object sender, RoutedEventArgs e)
         {
             if (!firstTimeRunning)
             {
@@ -357,7 +385,20 @@ namespace Przeliterowywacz
                             sapi.Volume = sapiVolume;
                             sapi.SetOutputToWaveFile(FD.FileName);
                             for (int i = 0; i < textToRecord.Length; i++)
-                                sapi.Speak(textToRecord.Substring(i, 1));
+                            {
+                                try
+                                {
+                                    spellAsSapi(i, textToRecord);
+                                }
+                                catch (ArgumentNullException)
+	                            {
+                                    continue;
+                                }
+                                catch (Exception)
+                                {
+                                    throw;
+                                }
+                            }
                             sapi.SetOutputToDefaultAudioDevice();
                         }
                         catch (Exception ex)
@@ -399,6 +440,11 @@ namespace Przeliterowywacz
                 ow.Close();
             if (aw != null)
                 aw.Close();
+        }
+
+        private void Button3_Click(object sender, RoutedEventArgs e)
+        {
+            isQuiet = true;
         }
 
         private void Button4_Click(object sender, RoutedEventArgs e)

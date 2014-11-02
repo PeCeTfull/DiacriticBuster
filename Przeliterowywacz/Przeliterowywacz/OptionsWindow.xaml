@@ -10,14 +10,14 @@
             <GradientStop Color="#FF623FD2" Offset="1" />
         </RadialGradientBrush>
     </Window.Background>
-    <StackPanel Margin="10,10,10,10">
+    <StackPanel Margin="10,5,10,10">
         <GroupBox Header="{x:Static p:Resources.SpeechbankSettings}" Foreground="White">
             <UniformGrid Rows="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <CheckBox Name="CheckBox1" Content="{x:Static p:Resources.EnableSpecialChars}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Checked="CheckBox1_Checked" Unchecked="CheckBox1_Unchecked"/>
                 <CheckBox Name="CheckBox2" Content="{x:Static p:Resources.DeriveFromDefaultSpeechbank}" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Foreground="White" Checked="CheckBox2_Checked" Unchecked="CheckBox2_Unchecked"/>
             </UniformGrid>
         </GroupBox>
-        <GroupBox Header="{x:Static p:Resources.SAPI5Settings}" Margin="0,5,0,0" Foreground="White">
+        <GroupBox Header="{x:Static p:Resources.SAPI5Settings}" Margin="0,3,0,0" Foreground="White">
             <UniformGrid Columns="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <DockPanel HorizontalAlignment="Stretch" Margin="0,1,0,0" VerticalAlignment="Top">
                     <Label Content="{x:Static p:Resources.Rate}" Foreground="White"/>
@@ -37,7 +37,10 @@
                 </DockPanel>
             </UniformGrid>
         </GroupBox>
-        <GroupBox Header="{x:Static p:Resources.Use}" Margin="0,3,0,0"  Foreground="White">
+        <GroupBox Header="{x:Static p:Resources.CommonSettings}" Margin="0,3,0,0" Foreground="White">
+            <CheckBox Name="CheckBox3" Content="{x:Static p:Resources.ReadZeroAsOLetter}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Checked="CheckBox3_Checked" Unchecked="CheckBox3_Unchecked"/>
+        </GroupBox>
+        <GroupBox Header="{x:Static p:Resources.Use}" Margin="0,3,0,0" Foreground="White">
             <UniformGrid Columns="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <RadioButton Name="RadioButton1" Content="{x:Static p:Resources.Speechbanks}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Checked="RadioButton1_Checked"/>
                 <RadioButton Name="RadioButton2" Content="{x:Static p:Resources.SAPI5Synthesis}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Checked="RadioButton2_Checked"/>

@@ -144,7 +144,7 @@
   <data name="OptionsButton" xml:space="preserve">
     <value>_Options</value>
   </data>
-  <data name="RecordButton" xml:space="preserve">
+  <data name="Record" xml:space="preserve">
     <value>_Record</value>
   </data>
   <data name="SavedStatus" xml:space="preserve">
@@ -198,8 +198,8 @@ Version: {1}
 Author: {2}
 {3}
 Modifying and selling this program is strictly prohibited.
-Special thanks to Mark Heath for NAudio library and Paweł Firlej 
-(http://pfco.de) for lending the voice for the default speech bank.</value>
+Special thanks to Mark Heath for NAudio library and 
+pfcode for lending the voice for the default speech bank.</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Interface language: </value>
@@ -270,5 +270,17 @@ Special thanks to Mark Heath for NAudio library and Paweł Firlej
   </data>
   <data name="Volume" xml:space="preserve">
     <value>Volume: </value>
+  </data>
+  <data name="CommonSettings" xml:space="preserve">
+    <value>Common settings</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>_Play</value>
+  </data>
+  <data name="ReadZeroAsOLetter" xml:space="preserve">
+    <value>Read all zero characters as the letter 'o'</value>
+  </data>
+  <data name="StopButton" xml:space="preserve">
+    <value>S_top</value>
   </data>
 </root>
