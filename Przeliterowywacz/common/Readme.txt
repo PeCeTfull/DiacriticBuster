@@ -1,6 +1,6 @@
 Przeliterowywacz (Speller) #PUTTHEVERSIONHERE
 Author: PeCeT_full
-Website: http://www.komputermania.keed.pl
+Website: http://www.komputermania.pl.eu.org
 Copyright © by PeCeT_full 2014. Modifying and selling this program is strictly prohibited.
 Special thanks to Mark Heath for NAudio library and pfcode for lending the voice for the default speech bank.
 
