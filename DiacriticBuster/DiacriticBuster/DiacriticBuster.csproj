@@ -140,7 +140,10 @@
     <PostBuildEvent>xcopy /e "$(SolutionDir)common\*" "$(ProjectDir)$(OutDir)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>rd /s /q $(TargetDir)Schemes\</PreBuildEvent>
+    <PreBuildEvent>del $(TargetDir)Czytajto.txt
+del $(TargetDir)Czytaj9x.txt
+del $(TargetDir)Readme.txt
+rd /s /q $(TargetDir)Schemes\</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
