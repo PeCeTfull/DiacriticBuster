@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("PeCeT_full")]
 [assembly: AssemblyProduct("Diacritic Buster")]
-[assembly: AssemblyCopyright("Copyright © PeCeT_full 2014")]
+[assembly: AssemblyCopyright("Copyright © PeCeT_full 2015")]
 [assembly: AssemblyTrademark("All Rights Reserved")]
 [assembly: AssemblyCulture("")]
 
