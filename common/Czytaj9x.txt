@@ -27,6 +27,10 @@ Opcje programu
 
 Diacritic Buster pozwala na zmianê nastêpuj¹cych ustawieñ: 
 
+* Konwertuj zawartoœæ Schowka automatycznie za pomoc¹ kombinacji Alt+C – dopóki wewn¹trz Schowka systemowego znajduje siê tekst, mo¿e on zostaæ skonwertowany za pomoc¹ obecnie wybranego schematu. Pozwala to na korzystanie z programu bez potrzeby prze³¹czania siê pomiêdzy aplikacjami.
+
+* Program ukryty po uruchomieniu – po uruchomieniu program schowany jest w zasobniku systemowym. Aby go przywróciæ, nale¿y klikn¹æ dwukrotnie lewym przyciskiem myszy na ikonê programu albo nacisn¹æ prawym przyciskiem myszy i z menu kontekstowego wybraæ polecenie „Ukryj/przywróæ”.
+
 * Dostêpne schematy – lista schematów, z których mo¿na skorzystaæ. Te poni¿sze s¹ oryginalnie do³¹czone do programu, a zatem gotowe do u¿ycia: 
 	— Alternate German accents (zastosuj alternatywne akcenty niemieckie), 
 	— Make Hungarian compatible with Western European set (zapewnij zgodnoœæ jêzyka wêgierskiego z zachodnioeuropejskim zestawem znaków), 

@@ -141,4 +141,10 @@
   <data name="NoSchemeSelectedMessage" xml:space="preserve">
     <value>You have not chosen any scheme from the list. Please select one of them first.</value>
   </data>
+  <data name="AfterAboutMenuName" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="BeforeAboutMenuName" xml:space="preserve">
+    <value>About </value>
+  </data>
 </root>

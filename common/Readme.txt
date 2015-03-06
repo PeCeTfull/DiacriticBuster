@@ -27,6 +27,10 @@ Program options
 
 Diacritic Buster allows to change the following settings: 
 
+* Convert Clipboard content automatically with the Alt+C hotkey combination – until there is a text inside the system Clipboard, it can be converted using currently chosen scheme. This allows you to use the program without having to switch between applications.
+
+* Program hidden on start-up – after start-up, the program is hidden in the system tray. To restore it, one needs to double-click the left mouse button on the program's icon or press the right mouse button and from the context menu, select "Hide/restore".
+
 * Available schemes – the list of schemes you are able to use. The following ones are originally included with the program, thus they are ready to use: 
 	— Alternate German accents, 
 	— Make Hungarian compatible with Western European set, 

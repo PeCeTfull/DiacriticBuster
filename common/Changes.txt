@@ -1,0 +1,7 @@
+The changelog of Diacritic Buster
+
+1.1 (Beta 1): 
+* the program appears in the system tray — it is also possible to hide it on its startup; 
+* Clipboard content convertion possibility using the Alt+C hotkey combination.
+
+1.0.5479.35147 (2015-01-01) — first public release version.

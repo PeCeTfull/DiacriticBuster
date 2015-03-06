@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,15 +15,37 @@ namespace DiacriticBuster
 {
     public partial class MainForm : Form
     {
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        enum KeyModifier
+        {
+            None = 0,
+            Alt = 1,
+            Control = 2,
+            Shift = 4,
+            WinKey = 8
+        }
+
         const string configFileName = "DiacriticBuster.ini"; // the configuration filename
         // DEFAULT CONFIGURATION
         string currentScheme = Properties.Resources.Default;
         string currentLanguage = "en-CA";
+        bool autoConvertClipboardContentOnAltC = true;
+        bool hiddenOnStartup = false;
 
         // FORM'S 'PERSONAL' OPTIONS
+        private bool allowShowDisplay = false;
         string schemesDirectory = Environment.CurrentDirectory + "\\Schemes\\";
         int currentSchemeBasicStringLength;
         Dictionary<string, string> currentDiacriticDealingMethods = new Dictionary<string,string>();
+
+        protected override void SetVisibleCore(bool value)
+        {
+            base.SetVisibleCore(allowShowDisplay ? value : allowShowDisplay);
+        }
 
         public void LoadScheme()
         {
@@ -57,6 +80,24 @@ namespace DiacriticBuster
             }
             currentLanguage = chosenLanguage;
             currentSchemeBasicStringLength = this.label3.Text.Length;
+            if (currentLanguage.IndexOf("pl") > -1)
+            {
+                englishToolStripMenuItem.Checked = false;
+                polskiToolStripMenuItem.Checked = true;
+                deutschToolStripMenuItem.Checked = false;
+            }
+            else if (currentLanguage.IndexOf("de") > -1)
+            {
+                englishToolStripMenuItem.Checked = false;
+                polskiToolStripMenuItem.Checked = false;
+                deutschToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                englishToolStripMenuItem.Checked = true;
+                polskiToolStripMenuItem.Checked = false;
+                deutschToolStripMenuItem.Checked = false;
+            }
         }
 
         public MainForm()
@@ -79,6 +120,10 @@ namespace DiacriticBuster
                         if (currentScheme == "<default>")
                             currentScheme = Properties.Resources.Default;
                     }
+                    else if (srLine.Contains("AutoConvertClipboardContentOnAltC="))
+                        autoConvertClipboardContentOnAltC = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(34)));
+                    else if (srLine.Contains("HiddenOnStartup="))
+                        hiddenOnStartup = Convert.ToBoolean(Convert.ToInt16(srLine.Substring(16)));
                 }
                 sr.Close();
             }
@@ -87,12 +132,34 @@ namespace DiacriticBuster
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(currentLanguage);
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(currentLanguage);
             }
+
             InitializeComponent();
+
             this.Text = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName;
+            this.notifyIcon1.Text = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName;
+            this.restoreToolStripMenuItem.Font = new Font(this.restoreToolStripMenuItem.Font, FontStyle.Bold);
+            this.aboutProgramToolStripMenuItem.Text = Properties.Resources.BeforeAboutMenuName + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName + Properties.Resources.AfterAboutMenuName;
+            if (currentLanguage.IndexOf("pl") > -1)
+                polskiToolStripMenuItem.Checked = true;
+            else if (currentLanguage.IndexOf("de") > -1)
+                deutschToolStripMenuItem.Checked = true;
+            else
+                englishToolStripMenuItem.Checked = true;
+
             LoadScheme();
             currentSchemeBasicStringLength = this.label3.Text.Length;
             this.label3.Text += currentScheme;
-            //ChangeLanguage("en");
+
+            if (autoConvertClipboardContentOnAltC)
+            {
+                RegisterHotKey(this.Handle, 0, (int)KeyModifier.Alt, Keys.C.GetHashCode());
+                autoConvertClipboardContentToolStripMenuItem.Checked = true;
+            }
+
+            if (!hiddenOnStartup)
+                this.allowShowDisplay = true;
+            else
+                hiddenOnStartupToolStripMenuItem.Checked = true;
         }
 
         public string ReturnSchemesDirectoryName()
@@ -105,9 +172,14 @@ namespace DiacriticBuster
             return currentScheme;
         }
 
-        public string ReturnConfigFileName()
+        public bool ReturnAutoConvertClipboardContentProperty()
         {
-            return configFileName;
+            return autoConvertClipboardContentOnAltC;
+        }
+
+        public bool ReturnHiddenOnStartupProperty()
+        {
+            return hiddenOnStartup;
         }
 
         public void ChangeSchemePublicInfo(string switchedScheme)
@@ -123,11 +195,35 @@ namespace DiacriticBuster
             LoadScheme();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void ChangeAutoConvertClipboardContentProperty(bool switchedProperty)
         {
-            string initialText = textBox1.Text;
+            autoConvertClipboardContentOnAltC = switchedProperty;
+            if (switchedProperty)
+                RegisterHotKey(this.Handle, 0, (int)KeyModifier.Alt, Keys.C.GetHashCode());
+            else
+                UnregisterHotKey(this.Handle, 0);
+            autoConvertClipboardContentToolStripMenuItem.Checked = switchedProperty;
+        }
+
+        public void ChangeHiddenOnStartupProperty(bool switchedProperty)
+        {
+            hiddenOnStartup = switchedProperty;
+            hiddenOnStartupToolStripMenuItem.Checked = switchedProperty;
+        }
+
+        public void SaveSettings(string chosenLanguage)
+        {
+            string scheme = currentScheme;
+            if (scheme == Properties.Resources.Default)
+                scheme = "<default>";
+            var sw = new StreamWriter(new FileStream(configFileName, FileMode.Create), Encoding.UTF8);
+            sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName + "]\r\nLanguage=" + chosenLanguage + "\r\nScheme=" + scheme + "\r\nAutoConvertClipboardContentOnAltC=" + Convert.ToInt16(autoConvertClipboardContentOnAltC) + "\r\nHiddenOnStartup=" + Convert.ToInt16(hiddenOnStartup)); // rewriting the configuration into the file using UTF-8 conversion
+            sw.Close();
+        }
+
+        private string ConvertText(string initialText)
+        {
             string finalText = "";
-            textBox2.Text = "";
             if (currentScheme == Properties.Resources.Default)
             {
                 byte[] textBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(initialText);
@@ -157,13 +253,32 @@ namespace DiacriticBuster
                         finalText += initialText.Substring(i, 1);
                 }
             }
-            textBox2.Text = finalText;
+            return finalText;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            if (autoConvertClipboardContentOnAltC && m.Msg == 0x0312)
+            {
+                string textToConvert = Clipboard.GetText();
+                if (textToConvert != null)
+                    Clipboard.SetText(ConvertText(textToConvert));
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string textToConvert = textBox1.Text;
+            textBox2.Text = "";
+            textBox2.Text = ConvertText(textToConvert);
         }
 
         OptionsForm of;
         AboutBox ab;
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ShowProgramOptions()
         {
             if (of != null)
             {
@@ -174,10 +289,116 @@ namespace DiacriticBuster
             of.Show(this);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ShowAboutBox()
         {
             ab = new AboutBox();
             ab.ShowDialog(this);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ShowProgramOptions();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ShowAboutBox();
+        }
+
+        private void HideOrShowMainForm()
+        {
+            if (this.allowShowDisplay == false)
+            {
+                this.allowShowDisplay = true;
+                this.Visible = !this.Visible;
+            }
+            else if (this.Visible)
+                this.Hide();
+            else
+            {
+                this.Show();
+                if (this.WindowState == FormWindowState.Minimized)
+                    this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            HideOrShowMainForm();
+        }
+
+        private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HideOrShowMainForm();
+        }
+
+        private void closeApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ab == null)
+                ShowAboutBox();
+            else if (!ab.Visible)
+                ShowAboutBox();
+        }
+
+        private void moreOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowProgramOptions();
+        }
+
+        private void ChangeLanguageFromMenu(string chosenLanguage)
+        {
+            ChangeLanguage(chosenLanguage);
+            MessageBox.Show(Properties.Resources.ChangedLanguageMessage, FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            SaveSettings(chosenLanguage);
+        }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string selectedLanguage = "en-CA";
+            if (!englishToolStripMenuItem.Checked)
+                ChangeLanguageFromMenu(selectedLanguage);
+        }
+
+        private void polskiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string selectedLanguage = "pl-PL";
+            if (!polskiToolStripMenuItem.Checked)
+                ChangeLanguageFromMenu(selectedLanguage);
+        }
+
+        private void deutschToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string selectedLanguage = "de-DE";
+            if (!deutschToolStripMenuItem.Checked)
+                ChangeLanguageFromMenu(selectedLanguage);
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+                this.Hide();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotKey(this.Handle, 0);
+        }
+
+        private void autoConvertClipboardContentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeAutoConvertClipboardContentProperty(!autoConvertClipboardContentToolStripMenuItem.Checked);
+            SaveSettings(currentLanguage);
+        }
+
+        private void hiddenOnStartupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeHiddenOnStartupProperty(!hiddenOnStartupToolStripMenuItem.Checked);
+            SaveSettings(currentLanguage);
         }
     }
 }

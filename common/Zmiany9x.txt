@@ -1,0 +1,7 @@
+Spis zmian programu Diacritic Buster
+
+1.1 (Beta 1): 
+* program pojawia siê w zasobniku systemowym — mo¿na go tak¿e ukryæ po jego uruchomieniu; 
+* mo¿liwoœæ konwersji zawartoœci Schowka za pomoc¹ kombinacji klawiszy Alt+C.
+
+1.0.5479.35147 (1.I.2015) — pierwsza publicznie wydana wersja.

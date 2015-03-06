@@ -139,6 +139,21 @@
   <data name="button5.Text" xml:space="preserve">
     <value>&amp;Importieren</value>
   </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Allgemeine Einstellungen</value>
+  </data>
+  <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 17</value>
+  </data>
+  <data name="checkBox2.Text" xml:space="preserve">
+    <value>Das Programm beim Start ausgeblendet</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 17</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Der Inhalt der Zwischenablage mit der Kombination Alt+C konvertieren</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Programmoptionen</value>
   </data>

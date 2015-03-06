@@ -46,6 +46,9 @@ namespace DiacriticBuster
                 radioButton3.Checked = true;
             else
                 radioButton1.Checked = true;
+            // check current general settings
+            checkBox1.Checked = mf.ReturnAutoConvertClipboardContentProperty();
+            checkBox2.Checked = mf.ReturnHiddenOnStartupProperty();
         }
 
         private void ShowNoSchemeSelectedMessageBox()
@@ -62,12 +65,9 @@ namespace DiacriticBuster
                 MessageBox.Show(Properties.Resources.ChangedLanguageMessage, FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             mf.ChangeSchemePublicInfo(listBox1.SelectedItem.ToString());
-            string scheme = mf.ReturnCurrentSchemeName();
-            if (scheme == Properties.Resources.Default)
-                scheme = "<default>";
-            var sw = new StreamWriter(new FileStream(mf.ReturnConfigFileName(), FileMode.Create), Encoding.UTF8);
-            sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName + "]\r\nLanguage=" + selectedLanguage + "\r\nScheme=" + scheme); // rewriting the configuration into the file using UTF-8 conversion
-            sw.Close();
+            mf.ChangeAutoConvertClipboardContentProperty(checkBox1.Checked);
+            mf.ChangeHiddenOnStartupProperty(checkBox2.Checked);
+            mf.SaveSettings(selectedLanguage);
         }
 
         private void button1_Click(object sender, EventArgs e)
