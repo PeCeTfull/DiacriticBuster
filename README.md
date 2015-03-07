@@ -26,4 +26,4 @@ Visual Studio 2012 due to the ability to handle .NET Framework 2.0 and its newer
 
 ### Program licence ###
 
-Please refer to the LICENSE.txt file of this repository for more information regarding it.
+Diacritic Buster is published under The MIT License. Please refer to the LICENSE.txt file of this repository for more information regarding it.
