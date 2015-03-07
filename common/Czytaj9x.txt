@@ -1,7 +1,7 @@
 Diacritic Buster (Pogromca znaków diakrytycznych) #TUPODAJWERSJÊ
 Autor: PeCeT_full
 Strona WWW: http://www.komputermania.pl.eu.org/pl
-Copyright © by PeCeT_full 2015. Modyfikowanie oraz sprzedawanie tego programu jest surowo zabronione.
+Copyright © by PeCeT_full 2015. Diacritic Buster jest publikowany na zasadach licencji MIT. Wiêcej informacji mo¿na uzyskaæ zapoznaj¹c siê z plikiem Licence.txt do³¹czonym do aplikacji (polskie t³umaczenie licencji MIT: http://blaszyk-jarosinski.pl/wp-content/uploads/2008/05/licencja-mit-tlumaczenie.pdf).
 
 W razie wszelkich problemów czy te¿ w¹tpliwoœci proszê o kontakt.
 
@@ -33,11 +33,13 @@ Diacritic Buster pozwala na zmianê nastêpuj¹cych ustawieñ:
 
 * Dostêpne schematy – lista schematów, z których mo¿na skorzystaæ. Te poni¿sze s¹ oryginalnie do³¹czone do programu, a zatem gotowe do u¿ycia: 
 	— Alternate German accents (zastosuj alternatywne akcenty niemieckie), 
+	— Convert Romaji text to Katakana (skonwertuj tekst w ³aciñskim zapisie transkrypcyjnym jêzyka japoñskiego na tekst w katakanie), 
 	— Make Hungarian compatible with Western European set (zapewnij zgodnoœæ jêzyka wêgierskiego z zachodnioeuropejskim zestawem znaków), 
 	— Remove all Central European specific accents only (usuñ wszystkie akcenty charakterystyczne tylko dla Europy Œrodkowej), 
 	— Remove Polish accents except o-acute (usuñ polskie akcenty oprócz liter O ze znakiem akcentu silnego), 
 	— Remove Polish accents (usuñ polskie akcenty), 
+	— Romanise Katakana letters (zromanizuj znaki japoñskie napisane katakan¹), 
 	— Romanise Russian letters the GOST 2002(B) method (zromanizuj litery rosyjskie metod¹ GOST 2002(B)).
-Gdy schemat jest ustawiony jako domyœlny, program postara obejœæ siê ze wszystkimi obecnymi znakami diakrytycznymi po swojemu. By dodaæ kolejny w³asny schemat do listy, bêdziesz musia³ utworzyæ nowy zwyk³y dokument tekstowy (tj. plik tekstowy napisany w prostym edytorze tekstów, takim jak Notatnik z systemu Windows, gedit czy vi nie posiadaj¹cych ¿adnych funkcji formatuj¹cych) oraz koniecznie zapisaæ go jako plik o rozszerzeniu „.txt”, w kodowaniu znaków UTF-8. Potencjalny plik schematu programu Diacritic Buster musi sk³adaæ siê wy³¹cznie z linijek korzystaj¹cych z nastêpuj¹cego wzoru: „znak_do_zamiany|docelowy_znak_lub_zbiór_znaków” (bez cudzys³owia). Je¿eli coœ jest nie tak z importowanym plikiem, nie zostanie on przyjêty, jednak¿e przekszta³canie symboli (z wyj¹tkiem znaku „|”) w jakiekolwiek inne znaki równie¿ jest mo¿liwe.
+Gdy schemat jest ustawiony jako domyœlny, program postara obejœæ siê ze wszystkimi obecnymi znakami diakrytycznymi po swojemu. By dodaæ kolejny w³asny schemat do listy, bêdziesz musia³ utworzyæ nowy zwyk³y dokument tekstowy (tj. plik tekstowy napisany w prostym edytorze tekstów, takim jak Notatnik z systemu Windows, gedit czy vi nie posiadaj¹cych ¿adnych funkcji formatuj¹cych) oraz koniecznie zapisaæ go jako plik o rozszerzeniu „.txt”, w kodowaniu znaków UTF-8. Potencjalny plik schematu programu Diacritic Buster musi sk³adaæ siê wy³¹cznie z linijek korzystaj¹cych z nastêpuj¹cego wzoru: „znak_lub_zbiór_znaków_do_zamiany|docelowy_znak_lub_zbiór_znaków” (bez cudzys³owia). Je¿eli coœ jest nie tak z importowanym plikiem, nie zostanie on przyjêty, jednak¿e przekszta³canie symboli (z wyj¹tkiem znaku „|”) w jakiekolwiek inne znaki równie¿ jest mo¿liwe.
 
 * Jêzyk – mo¿esz prze³¹czyæ z obecnego jêzyka interfejsu na jeden z po¿¹danych.

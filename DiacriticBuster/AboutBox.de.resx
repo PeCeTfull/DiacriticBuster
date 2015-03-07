@@ -127,7 +127,7 @@
     <value>Verwandelt sich diakritische Zeichen eines Textes in ihre enge Äquivalente</value>
   </data>
   <data name="MoreRichTextBox.Text" xml:space="preserve">
-    <value>%product% ist %copyright%, alle Rechte vorbehalten. Änderung und Verkauf dieses Programm ist streng verboten.</value>
+    <value>%product% ist %copyright%, manche Rechte vorbehalten. Dieses Programm steht unter der MIT-Lizenz. Weitere Angaben hierzu finden Sie unter Licence.txt-Datei in der Anwendung enthalten.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Über %title%</value>

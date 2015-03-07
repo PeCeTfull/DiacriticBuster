@@ -12,7 +12,7 @@ using System.Resources;
 [assembly: AssemblyCompany("PeCeT_full")]
 [assembly: AssemblyProduct("Diacritic Buster")]
 [assembly: AssemblyCopyright("Copyright © PeCeT_full 2015")]
-[assembly: AssemblyTrademark("All Rights Reserved")]
+[assembly: AssemblyTrademark("Some Rights Reserved")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

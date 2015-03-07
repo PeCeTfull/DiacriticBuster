@@ -142,7 +142,11 @@
   <PropertyGroup>
     <PreBuildEvent>del $(TargetDir)Czytajto.txt
 del $(TargetDir)Czytaj9x.txt
+del $(TargetDir)Zmiany.txt
+del $(TargetDir)Zmiany9x.txt
 del $(TargetDir)Readme.txt
+del $(TargetDir)Changes.txt
+del $(TargetDir)Licence.txt
 rd /s /q $(TargetDir)Schemes\</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

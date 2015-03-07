@@ -61,7 +61,14 @@ namespace DiacriticBuster
                     while ((srLine = sr.ReadLine()) != null)
                     {
                         string[] diacriticRule = srLine.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                        currentDiacriticDealingMethods.Add(diacriticRule[0], diacriticRule[1]);
+                        try
+                        {
+                            currentDiacriticDealingMethods.Add(diacriticRule[0], diacriticRule[1]);
+                        }
+                        catch (ArgumentException) // happens mostly when the key is already added to the dictionary - when it repeats, it's simply omitted
+                        {
+                            continue;
+                        }
                         i++;
                     }
                     sr.Close();
@@ -231,22 +238,37 @@ namespace DiacriticBuster
             }
             else
             {
+                int charDebt = 0;
                 for (int i = 0; i < initialText.Length; i++)
                 {
+                    if (charDebt > 0)
+                    {
+                        charDebt--;
+                        continue;
+                    }
                     bool accentNotFound = true;
                     foreach (var accent in currentDiacriticDealingMethods)
                     {
-                        if (accent.Key == initialText.Substring(i, 1))
+                        try
                         {
-                            if (accent.Value == "$")
+                            if (accent.Key == initialText.Substring(i, accent.Key.Length))
                             {
-                                byte[] textBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accent.Key);
-                                finalText += System.Text.Encoding.UTF8.GetString(textBytes);
+                                if (accent.Value == "$")
+                                {
+                                    byte[] textBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accent.Key);
+                                    finalText += System.Text.Encoding.UTF8.GetString(textBytes);
+                                }
+                                else
+                                    finalText += accent.Value;
+                                accentNotFound = false;
+                                if (accent.Key.Length > 1)
+                                    charDebt += accent.Key.Length - 1;
+                                break;
                             }
-                            else
-                                finalText += accent.Value;
-                            accentNotFound = false;
-                            break;
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            continue;
                         }
                     }
                     if (accentNotFound)

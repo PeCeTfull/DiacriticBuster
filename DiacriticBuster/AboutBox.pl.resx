@@ -137,7 +137,7 @@
     <value>Przekształca znaki diakrytyczne w tekście w ich bliskie odpowiedniki</value>
   </data>
   <data name="MoreRichTextBox.Text" xml:space="preserve">
-    <value>%product% jest chroniony prawem autorskim © przez %company%, %year%, wszelkie prawa zastrzeżone. Modyfikowanie oraz sprzedawanie tego programu jest surowo zabronione.</value>
+    <value>%product% jest chroniony prawem autorskim © przez %company%, %year%, niektóre prawa zastrzeżone. Ten program jest publikowany na zasadach licencji MIT. Więcej informacji można uzyskać zapoznając się z plikiem Licence.txt dołączonym do aplikacji (polskie tłumaczenie licencji MIT: http://blaszyk-jarosinski.pl/wp-content/uploads/2008/05/licencja-mit-tlumaczenie.pdf).</value>
   </data>
   <data name="DetailsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 245</value>

@@ -1,7 +1,12 @@
 Spis zmian programu Diacritic Buster
 
-1.1 (Beta 1): 
+1.1.x.x (#TUPODAJDATÊWYDANIA): 
 * program pojawia siê w zasobniku systemowym — mo¿na go tak¿e ukryæ po jego uruchomieniu; 
-* mo¿liwoœæ konwersji zawartoœci Schowka za pomoc¹ kombinacji klawiszy Alt+C.
+* mo¿liwoœæ konwersji zawartoœci Schowka za pomoc¹ kombinacji klawiszy Alt+C; 
+* obs³uga kluczów wieloznakowych (typu string) — pozwala na pracê z dwuznakami oraz d³u¿szymi kombinacjami; 
+* za³¹czono schematy katakany; 
+* usuniêto b³¹d z powtarzaj¹cymi siê kluczami w plikach schematu; 
+* naprawiono schemat „Romanise Russian letters the GOST 2002(B) method”; 
+* zmieniono licencjê oprogramowania na licencjê MIT.
 
 1.0.5479.35147 (1.I.2015) — pierwsza publicznie wydana wersja.
