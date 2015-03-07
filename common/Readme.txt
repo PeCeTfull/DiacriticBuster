@@ -1,7 +1,7 @@
 Diacritic Buster #PUTTHEVERSIONHERE
 Author: PeCeT_full
 Website: http://www.komputermania.pl.eu.org
-Copyright © by PeCeT_full 2015. Diacritic Buster is published under The MIT License. For more information, please refer to Licence.txt included with the application.
+Copyright (c) by PeCeT_full 2015. Diacritic Buster is published under The MIT License. For more information, please refer to Licence.txt included with the application.
 
 If there are any problems or doubts, please contact me.
 
