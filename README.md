@@ -16,15 +16,8 @@ Diacritic Buster allows to change the following settings:
 
 * Program hidden on start-up – after start-up, the program is hidden in the system tray. To restore it, one needs to double-click the left mouse button on the program's icon or press the right mouse button and from the context menu, select "Hide/restore".
 
-* Available schemes – the list of schemes you are able to use. The following ones are originally included with the program, thus they are ready to use: 
-	— Alternate German accents, 
-	— Convert Romaji text to Katakana, 
-	— Make Hungarian compatible with Western European set, 
-	— Remove all Central European specific accents only, 
-	— Remove Polish accents except o-acute, 
-	— Remove Polish accents, 
-	— Romanise Katakana letters, 
-	— Romanise Russian letters the GOST 2002(B) method.
+* Available schemes – the list of schemes you are able to use. The following ones are originally included with the program, thus they are ready to use: Alternate German accents, Convert Romaji text to Katakana, Make Hungarian compatible with Western European set, Remove all Central European specific accents only, Remove Polish accents except o-acute, Remove Polish accents, Romanise Katakana letters, Romanise Russian letters the GOST 2002(B) method.
+
 When the scheme is set to default, the program will try to handle all present diacritics its own way. To add another custom scheme to the list, you will need to create a new plain text document (i.e. a text file written in a simple text editor like Windows Notepad, gedit or vi that lacks of any formatting feature) and necessarily, save it with extension ".txt" in UTF-8 character encoding. A potential Diacritic Buster scheme file needs to consist solely of the lines that use the following pattern: "the_char_or_string_to_be_swapped|the_target_char_or_string" (without quotes). If there is something wrong with the import file, it will not be accepted, however transforming symbols (except the char '|') into any other characters is also possible. To make work with digraphs and longer combinations fully possible, it is required to sort descending all the keys in the scheme file starting from the longest key(s) (consisting of the highest amount of characters) to the shortest ones (consisting of only one character).
 
 ### Recommended IDE ###
