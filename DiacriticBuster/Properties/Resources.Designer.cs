@@ -70,11 +70,29 @@ namespace DiacriticBuster.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In the selected scheme file, one or more keys are repeated. The scheme will work but only the top keys will be taken into account. If possible, please update the scheme by excluding unnecessary keys..
+        /// </summary>
+        internal static string AnyKeyRepeatedMessage {
+            get {
+                return ResourceManager.GetString("AnyKeyRepeatedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About .
         /// </summary>
         internal static string BeforeAboutMenuName {
             get {
                 return ResourceManager.GetString("BeforeAboutMenuName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The program is unable to overwrite the configuration file. Please check if the program location is not write-protected and the Read-only attribute of {0} in the main directory is disabled..
+        /// </summary>
+        internal static string CannotOverwriteConfigFileMessage {
+            get {
+                return ResourceManager.GetString("CannotOverwriteConfigFileMessage", resourceCulture);
             }
         }
         

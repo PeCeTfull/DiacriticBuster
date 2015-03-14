@@ -1,6 +1,14 @@
 The changelog of Diacritic Buster
 
-1.1.x.x (#PUTTHERELEASEDATEHERE): 
+1.2.x.x (#PUTTHERELEASEDATEHERE): 
+* fixed the "Convert Romaji text to Katakana" scheme; 
+* removed the Alt+C hotkey bug with missing text in the Clipboard; 
+* an appropriate error dialog appears when DiacriticBuster.ini cannot be created nor overwritten; 
+* a number sign (hash) instead of a dollar sign as a value in scheme files for doing conventional converting tasks; 
+* an appropriate warning dialog appears when the keys in a scheme file are repeated at least once; 
+* a simple test during scheme importing verifying if the file encoding is ANSI (when the file contains any diacritic or other char from miscellaneous writing systems).
+
+1.1.5544.20372 (2015-03-07): 
 * the program appears in the system tray — it is also possible to hide it on its startup; 
 * Clipboard content convertion possibility using the Alt+C hotkey combination; 
 * multi-character (string) keys support — allows to work with digraphs and longer combinations; 

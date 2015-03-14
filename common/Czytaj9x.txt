@@ -9,7 +9,7 @@ W razie wszelkich problemów czy te¿ w¹tpliwoœci proszê o kontakt.
 Opis programu
 -------------
 
-Program ten mo¿e pomóc Tobie w pozbyciu siê niekompatybilnych znaków znajdowanych w jakimkolwiek tekœcie u¿ywaj¹c w zamian ich alternatywnych lub uproszczonych form, aby by³y przetwarzalne przez dowolne docelowe oprogramowanie odczytuj¹ce nie bêd¹ce sobie w stanie poradziæ z ich oryginalnymi odpowiednikami. Zosta³ on napisany w jêzyku C# i korzysta z interfejsu Window Forms jako interfejsu u¿ytkownika. Uruchamia siê w trybie 32- lub 64-bitowym w zale¿noœci od œrodowiska systemowego.
+Program ten mo¿e pomóc Tobie w pozbyciu siê niekompatybilnych znaków znajdowanych w jakimkolwiek tekœcie u¿ywaj¹c w zamian ich alternatywnych lub uproszczonych form, aby by³y przetwarzalne przez dowolne docelowe oprogramowanie odczytuj¹ce nie bêd¹ce sobie w stanie poradziæ z ich oryginalnymi odpowiednikami. Zosta³ on napisany w jêzyku C# i korzysta z interfejsu Windows Forms jako interfejsu u¿ytkownika. Uruchamia siê w trybie 32- lub 64-bitowym w zale¿noœci od œrodowiska systemowego.
 
 Minimalne wymagania sprzêtowe i systemowe: procesor o mocy 400 MHz lub szybszy; 96 MB dostêpnej pamiêci RAM; 1 MB dostêpnego wolnego miejsca na dysku, w którym znajduje siê program; system operacyjny Windows 98 lub nowszy z zainstalowan¹ platform¹ Microsoft .NET Framework 2.0.
 

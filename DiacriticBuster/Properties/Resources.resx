@@ -147,4 +147,10 @@
   <data name="BeforeAboutMenuName" xml:space="preserve">
     <value>About </value>
   </data>
+  <data name="CannotOverwriteConfigFileMessage" xml:space="preserve">
+    <value>The program is unable to overwrite the configuration file. Please check if the program location is not write-protected and the Read-only attribute of {0} in the main directory is disabled.</value>
+  </data>
+  <data name="AnyKeyRepeatedMessage" xml:space="preserve">
+    <value>In the selected scheme file, one or more keys are repeated. The scheme will work but only the top keys will be taken into account. If possible, please update the scheme by excluding unnecessary keys.</value>
+  </data>
 </root>

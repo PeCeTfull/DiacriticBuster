@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnyKeyRepeatedMessage" xml:space="preserve">
+    <value>In die gewählte Schemadatei werden einer oder mehrere Schlüssel sich wiederholen. Das Schema wird arbeiten aber nur die höchste Schlüssel werden berücksichtigt. Wenn möglich, bitte aktualisieren Sie das Schema durch Ausschluss überflüssiger Schlüssel.</value>
+  </data>
   <data name="BeforeAboutMenuName" xml:space="preserve">
     <value>Über </value>
+  </data>
+  <data name="CannotOverwriteConfigFileMessage" xml:space="preserve">
+    <value>Das Programm kann die Konfigurationsdatei nicht überschreiben. Bitte prüfen Sie, ob die Programmstelle nicht schreibgeschützt ist und ob im Hauptverzeichnis, das Attribut Schreibgeschützt von {0}-Datei deaktiviert ist.</value>
   </data>
   <data name="ChangedLanguageMessage" xml:space="preserve">
     <value>Eine andere Sprache hat gerade ausgewählt worden. Um alle Änderungen zu übernehmen, starten Sie bitte die Anwendung neu.</value>

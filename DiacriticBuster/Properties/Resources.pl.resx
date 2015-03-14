@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnyKeyRepeatedMessage" xml:space="preserve">
+    <value>W zaznaczonym pliku schematu jeden lub więcej kluczy powtarza się. Schemat zadziała, lecz tylko najwyżej umiejscowione klucze będą brane pod uwagę. Jeśli to możliwe, proszę zaktualizować schemat wykluczając zbędne klucze.</value>
+  </data>
   <data name="BeforeAboutMenuName" xml:space="preserve">
     <value>O programie </value>
+  </data>
+  <data name="CannotOverwriteConfigFileMessage" xml:space="preserve">
+    <value>Program nie jest w stanie nadpisać pliku konfiguracyjnego. Proszę sprawdzić, czy lokalizacja programu nie jest chroniona przed zapisem oraz czy atrybut Tylko do odczytu pliku {0} w katalogu głównym jest wyłączony.</value>
   </data>
   <data name="ChangedLanguageMessage" xml:space="preserve">
     <value>Właśnie został wybrany inny język. Aby wszelkie zmiany zostały odzwierciedlone, proszę zrestartować aplikację.</value>

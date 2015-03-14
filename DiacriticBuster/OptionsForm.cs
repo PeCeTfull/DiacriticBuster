@@ -145,7 +145,7 @@ namespace DiacriticBuster
                     bool isPassed = true; // a variable determining if the test is passed
                     while ((srLine = sr.ReadLine()) != null)
                     {
-                        if (srLine.Length > 0 && (srLine.IndexOf('|') == -1 || srLine.IndexOf('|') != srLine.LastIndexOf('|'))) // there must be only one single '|' char per line
+                        if (srLine.Length > 0 && (srLine.IndexOf('|') == -1 || srLine.IndexOf('|') != srLine.LastIndexOf('|') || srLine.Contains("�"))) // there must be only one single '|' char per line and the file mustn't be encoded in ANSI if it contains any diacritic or other char from miscellaneous writing systems
 	                    {
                             isPassed = false; // TEST NOT PASSED
 		                    break;

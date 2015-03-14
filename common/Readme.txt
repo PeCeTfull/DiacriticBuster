@@ -9,7 +9,7 @@ If there are any problems or doubts, please contact me.
 Program description
 -------------------
 
-This program can help you get rid of incompatible characters found in any piece of text using their alternative or simplified forms instead to be processable by any target reading software that is simply not able to deal with their original equivalents. It was written in C# and uses Window Forms as the user interface. Runs in 32- or 64-bit mode depending on the system environment.
+This program can help you get rid of incompatible characters found in any piece of text using their alternative or simplified forms instead to be processable by any target reading software that is simply not able to deal with their original equivalents. It was written in C# and uses Windows Forms as the user interface. Runs in 32- or 64-bit mode depending on the system environment.
 
 Minimal hardware and system requirements: 400 MHz or faster processor; 96 MB of available RAM; 1 MB of free hard disk space available where the program exists; Windows 98 or newer operating system with Microsoft .NET Framework 2.0 installed.
 

@@ -40,7 +40,7 @@ namespace DiacriticBuster
         private bool allowShowDisplay = false;
         string schemesDirectory = Environment.CurrentDirectory + "\\Schemes\\";
         int currentSchemeBasicStringLength;
-        Dictionary<string, string> currentDiacriticDealingMethods = new Dictionary<string,string>();
+        Dictionary<string, string> currentDiacriticDealingMethods = new Dictionary<string, string>();
 
         protected override void SetVisibleCore(bool value)
         {
@@ -58,6 +58,7 @@ namespace DiacriticBuster
                     var sr = new StreamReader(schemeFileLocation);
                     string srLine;
                     int i = 0;
+                    bool isAnyKeyRepeated = false;
                     while ((srLine = sr.ReadLine()) != null)
                     {
                         string[] diacriticRule = srLine.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
@@ -67,6 +68,11 @@ namespace DiacriticBuster
                         }
                         catch (ArgumentException) // happens mostly when the key is already added to the dictionary - when it repeats, it's simply omitted
                         {
+                            if (!isAnyKeyRepeated)
+                            {
+                                MessageBox.Show(Properties.Resources.AnyKeyRepeatedMessage, FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                isAnyKeyRepeated = true;
+                            }
                             continue;
                         }
                         i++;
@@ -223,9 +229,16 @@ namespace DiacriticBuster
             string scheme = currentScheme;
             if (scheme == Properties.Resources.Default)
                 scheme = "<default>";
-            var sw = new StreamWriter(new FileStream(configFileName, FileMode.Create), Encoding.UTF8);
-            sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName + "]\r\nLanguage=" + chosenLanguage + "\r\nScheme=" + scheme + "\r\nAutoConvertClipboardContentOnAltC=" + Convert.ToInt16(autoConvertClipboardContentOnAltC) + "\r\nHiddenOnStartup=" + Convert.ToInt16(hiddenOnStartup)); // rewriting the configuration into the file using UTF-8 conversion
-            sw.Close();
+            try
+            {
+                var sw = new StreamWriter(new FileStream(configFileName, FileMode.Create), Encoding.UTF8);
+                sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName + "]\r\nLanguage=" + chosenLanguage + "\r\nScheme=" + scheme + "\r\nAutoConvertClipboardContentOnAltC=" + Convert.ToInt16(autoConvertClipboardContentOnAltC) + "\r\nHiddenOnStartup=" + Convert.ToInt16(hiddenOnStartup)); // rewriting the configuration into the file using UTF-8 conversion
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Properties.Resources.CannotOverwriteConfigFileMessage, configFileName), Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
         }
 
         private string ConvertText(string initialText)
@@ -253,7 +266,7 @@ namespace DiacriticBuster
                         {
                             if (accent.Key == initialText.Substring(i, accent.Key.Length))
                             {
-                                if (accent.Value == "$")
+                                if (accent.Value == "#") // if the value is just a number sign (hash), then a conventional converting task is done
                                 {
                                     byte[] textBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accent.Key);
                                     finalText += System.Text.Encoding.UTF8.GetString(textBytes);
@@ -284,9 +297,16 @@ namespace DiacriticBuster
 
             if (autoConvertClipboardContentOnAltC && m.Msg == 0x0312)
             {
-                string textToConvert = Clipboard.GetText();
-                if (textToConvert != null)
-                    Clipboard.SetText(ConvertText(textToConvert));
+                try
+                {
+                    string textToConvert = Clipboard.GetText();
+                    if (textToConvert != null && textToConvert != "")
+                        Clipboard.SetText(ConvertText(textToConvert));
+                }
+                catch (AccessViolationException) // happens mostly when the Clipboard is completely empty
+                {
+                    ;
+                }
             }
         }
 

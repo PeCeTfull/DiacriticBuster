@@ -1,12 +1,20 @@
 Spis zmian programu Diacritic Buster
 
-1.1.x.x (#TUPODAJDATÊWYDANIA): 
+1.2.x.x (#TUPODAJDATÊWYDANIA): 
+* poprawiono schemat „Convert Romaji text to Katakana”; 
+* usuniêto b³¹d skrótu klawiaturowego Alt+C z brakuj¹cym tekstem w Schowku; 
+* pojawia siê stosowne okno z b³êdem, gdy plik DiacriticBuster.ini nie mo¿e byæ utworzony ani nadpisany; 
+* symbol kratki (ang. hash) zamiast znaku dolara jako wartoœæ w plikach schematu do wykonywania umownych zadañ konwertowania; 
+* pojawia siê stosowne okno z ostrze¿eniem, kiedy klucze w pliku schematu powtarzaj¹ siê przynajmniej raz; 
+* prosty test weryfikuj¹cy podczas importowania schematu, czy kodowanie pliku to ANSI (gdy plik zawiera jakikolwiek znak diakrytyczny lub inny z ró¿norodnych systemów pisma).
+
+1.1.5544.20372 (7.III.2015): 
 * program pojawia siê w zasobniku systemowym — mo¿na go tak¿e ukryæ po jego uruchomieniu; 
 * mo¿liwoœæ konwersji zawartoœci Schowka za pomoc¹ kombinacji klawiszy Alt+C; 
 * obs³uga kluczów wieloznakowych (typu string) — pozwala na pracê z dwuznakami oraz d³u¿szymi kombinacjami; 
 * za³¹czono schematy katakany; 
 * usuniêto b³¹d z powtarzaj¹cymi siê kluczami w plikach schematu; 
-* naprawiono schemat „Romanise Russian letters the GOST 2002(B) method”; 
+* poprawiono schemat „Romanise Russian letters the GOST 2002(B) method”; 
 * zmieniono licencjê oprogramowania na licencjê MIT.
 
 1.0.5479.35147 (1.I.2015) — pierwsza publicznie wydana wersja.
