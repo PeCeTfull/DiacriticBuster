@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.initialTextLabel = new System.Windows.Forms.Label();
+            this.initialTextBox = new System.Windows.Forms.TextBox();
+            this.finalTextBox = new System.Windows.Forms.TextBox();
+            this.finalTextLabel = new System.Windows.Forms.Label();
+            this.convertButton = new System.Windows.Forms.Button();
+            this.optionsButton = new System.Windows.Forms.Button();
+            this.currentSchemeLabel = new System.Windows.Forms.Label();
+            this.aboutButton = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoConvertClipboardContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hiddenOnStartupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hiddenOnLaunchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.polskiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,60 +56,61 @@
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // initialTextLabel
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.initialTextLabel, "initialTextLabel");
+            this.initialTextLabel.Name = "initialTextLabel";
             // 
-            // textBox1
+            // initialTextBox
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.initialTextBox, "initialTextBox");
+            this.initialTextBox.Name = "initialTextBox";
             // 
-            // textBox2
+            // finalTextBox
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.finalTextBox, "finalTextBox");
+            this.finalTextBox.Name = "finalTextBox";
             // 
-            // label2
+            // finalTextLabel
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.finalTextLabel, "finalTextLabel");
+            this.finalTextLabel.Name = "finalTextLabel";
             // 
-            // button1
+            // convertButton
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.convertButton, "convertButton");
+            this.convertButton.Name = "convertButton";
+            this.convertButton.UseVisualStyleBackColor = true;
+            this.convertButton.Click += new System.EventHandler(this.convertButton_Click);
             // 
-            // button2
+            // optionsButton
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            resources.ApplyResources(this.optionsButton, "optionsButton");
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
-            // label3
+            // currentSchemeLabel
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.currentSchemeLabel, "currentSchemeLabel");
+            this.currentSchemeLabel.Name = "currentSchemeLabel";
             // 
-            // button3
+            // aboutButton
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.aboutButton, "aboutButton");
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             resources.ApplyResources(this.notifyIcon1, "notifyIcon1");
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // contextMenuStrip1
             // 
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.restoreToolStripMenuItem,
             this.programOptionsToolStripMenuItem,
@@ -120,104 +121,103 @@
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.contextMenuStrip1.ShowCheckMargin = true;
             this.contextMenuStrip1.ShowImageMargin = false;
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // restoreToolStripMenuItem
             // 
-            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
             resources.ApplyResources(this.restoreToolStripMenuItem, "restoreToolStripMenuItem");
+            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
             this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // programOptionsToolStripMenuItem
             // 
+            resources.ApplyResources(this.programOptionsToolStripMenuItem, "programOptionsToolStripMenuItem");
             this.programOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.autoConvertClipboardContentToolStripMenuItem,
-            this.hiddenOnStartupToolStripMenuItem,
+            this.hiddenOnLaunchToolStripMenuItem,
             this.languagesToolStripMenuItem,
             this.toolStripSeparator2,
             this.moreOptionsToolStripMenuItem});
             this.programOptionsToolStripMenuItem.Name = "programOptionsToolStripMenuItem";
-            resources.ApplyResources(this.programOptionsToolStripMenuItem, "programOptionsToolStripMenuItem");
             // 
             // autoConvertClipboardContentToolStripMenuItem
             // 
-            this.autoConvertClipboardContentToolStripMenuItem.Name = "autoConvertClipboardContentToolStripMenuItem";
             resources.ApplyResources(this.autoConvertClipboardContentToolStripMenuItem, "autoConvertClipboardContentToolStripMenuItem");
+            this.autoConvertClipboardContentToolStripMenuItem.Name = "autoConvertClipboardContentToolStripMenuItem";
             this.autoConvertClipboardContentToolStripMenuItem.Click += new System.EventHandler(this.autoConvertClipboardContentToolStripMenuItem_Click);
             // 
-            // hiddenOnStartupToolStripMenuItem
+            // hiddenOnLaunchToolStripMenuItem
             // 
-            this.hiddenOnStartupToolStripMenuItem.Name = "hiddenOnStartupToolStripMenuItem";
-            resources.ApplyResources(this.hiddenOnStartupToolStripMenuItem, "hiddenOnStartupToolStripMenuItem");
-            this.hiddenOnStartupToolStripMenuItem.Click += new System.EventHandler(this.hiddenOnStartupToolStripMenuItem_Click);
+            resources.ApplyResources(this.hiddenOnLaunchToolStripMenuItem, "hiddenOnLaunchToolStripMenuItem");
+            this.hiddenOnLaunchToolStripMenuItem.Name = "hiddenOnLaunchToolStripMenuItem";
+            this.hiddenOnLaunchToolStripMenuItem.Click += new System.EventHandler(this.hiddenOnLaunchToolStripMenuItem_Click);
             // 
             // languagesToolStripMenuItem
             // 
+            resources.ApplyResources(this.languagesToolStripMenuItem, "languagesToolStripMenuItem");
             this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.polskiToolStripMenuItem,
             this.deutschToolStripMenuItem});
             this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
-            resources.ApplyResources(this.languagesToolStripMenuItem, "languagesToolStripMenuItem");
             // 
             // englishToolStripMenuItem
             // 
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // polskiToolStripMenuItem
             // 
-            this.polskiToolStripMenuItem.Name = "polskiToolStripMenuItem";
             resources.ApplyResources(this.polskiToolStripMenuItem, "polskiToolStripMenuItem");
+            this.polskiToolStripMenuItem.Name = "polskiToolStripMenuItem";
             this.polskiToolStripMenuItem.Click += new System.EventHandler(this.polskiToolStripMenuItem_Click);
             // 
             // deutschToolStripMenuItem
             // 
-            this.deutschToolStripMenuItem.Name = "deutschToolStripMenuItem";
             resources.ApplyResources(this.deutschToolStripMenuItem, "deutschToolStripMenuItem");
+            this.deutschToolStripMenuItem.Name = "deutschToolStripMenuItem";
             this.deutschToolStripMenuItem.Click += new System.EventHandler(this.deutschToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
             // 
             // moreOptionsToolStripMenuItem
             // 
-            this.moreOptionsToolStripMenuItem.Name = "moreOptionsToolStripMenuItem";
             resources.ApplyResources(this.moreOptionsToolStripMenuItem, "moreOptionsToolStripMenuItem");
+            this.moreOptionsToolStripMenuItem.Name = "moreOptionsToolStripMenuItem";
             this.moreOptionsToolStripMenuItem.Click += new System.EventHandler(this.moreOptionsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // closeApplicationToolStripMenuItem
             // 
-            this.closeApplicationToolStripMenuItem.Name = "closeApplicationToolStripMenuItem";
             resources.ApplyResources(this.closeApplicationToolStripMenuItem, "closeApplicationToolStripMenuItem");
+            this.closeApplicationToolStripMenuItem.Name = "closeApplicationToolStripMenuItem";
             this.closeApplicationToolStripMenuItem.Click += new System.EventHandler(this.closeApplicationToolStripMenuItem_Click);
             // 
             // aboutProgramToolStripMenuItem
             // 
-            this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
             resources.ApplyResources(this.aboutProgramToolStripMenuItem, "aboutProgramToolStripMenuItem");
+            this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.aboutButton);
+            this.Controls.Add(this.currentSchemeLabel);
+            this.Controls.Add(this.optionsButton);
+            this.Controls.Add(this.convertButton);
+            this.Controls.Add(this.finalTextBox);
+            this.Controls.Add(this.finalTextLabel);
+            this.Controls.Add(this.initialTextBox);
+            this.Controls.Add(this.initialTextLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -231,14 +231,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label initialTextLabel;
+        private System.Windows.Forms.TextBox initialTextBox;
+        private System.Windows.Forms.TextBox finalTextBox;
+        private System.Windows.Forms.Label finalTextLabel;
+        private System.Windows.Forms.Button convertButton;
+        private System.Windows.Forms.Button optionsButton;
+        private System.Windows.Forms.Label currentSchemeLabel;
+        private System.Windows.Forms.Button aboutButton;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
@@ -253,7 +253,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem moreOptionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoConvertClipboardContentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hiddenOnStartupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hiddenOnLaunchToolStripMenuItem;
     }
 }
 

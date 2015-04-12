@@ -24,31 +24,31 @@ namespace DiacriticBuster
             activeLanguage = language;
             selectedLanguage = activeLanguage;
             InitializeComponent();
-            listBox1.Items.Add(Properties.Resources.Default);
+            schemesListBox.Items.Add(Properties.Resources.Default);
             // insert all the schemes found inside Schemes folder into "Available schemes" list
             DirectoryInfo schemes = new DirectoryInfo(mf.ReturnSchemesDirectoryName());
             FileInfo[] files = schemes.GetFiles("*.txt");
             foreach (FileInfo file in files)
-                listBox1.Items.Add(file.Name.Substring(0, file.Name.Length - 4));
+                schemesListBox.Items.Add(file.Name.Substring(0, file.Name.Length - 4));
             // select the currently chosen scheme
-            for (int i = 0; i < listBox1.Items.Count; i++)
+            for (int i = 0; i < schemesListBox.Items.Count; i++)
             {
-                listBox1.SelectedIndex = i;
-                if (listBox1.SelectedItem.ToString() == mf.ReturnCurrentSchemeName())
+                schemesListBox.SelectedIndex = i;
+                if (schemesListBox.SelectedItem.ToString() == mf.ReturnCurrentSchemeName())
                     break;
                 else
-                    listBox1.SelectedIndex = 0;
+                    schemesListBox.SelectedIndex = 0;
             }
             // determine which program language is currently being used
             if (activeLanguage.IndexOf("pl") > -1)
-                radioButton2.Checked = true;
+                polskiRadioButton.Checked = true;
             else if (activeLanguage.IndexOf("de") > -1)
-                radioButton3.Checked = true;
+                deutschRadioButton.Checked = true;
             else
-                radioButton1.Checked = true;
+                englishRadioButton.Checked = true;
             // check current general settings
-            checkBox1.Checked = mf.ReturnAutoConvertClipboardContentProperty();
-            checkBox2.Checked = mf.ReturnHiddenOnStartupProperty();
+            convertClipboardWithHotkeyCheckBox.Checked = mf.ReturnAutoConvertClipboardContentProperty();
+            hiddenOnLaunchCheckBox.Checked = mf.ReturnHiddenOnStartupProperty();
         }
 
         private void ShowNoSchemeSelectedMessageBox()
@@ -64,15 +64,15 @@ namespace DiacriticBuster
                 activeLanguage = selectedLanguage;
                 MessageBox.Show(Properties.Resources.ChangedLanguageMessage, FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
-            mf.ChangeSchemePublicInfo(listBox1.SelectedItem.ToString());
-            mf.ChangeAutoConvertClipboardContentProperty(checkBox1.Checked);
-            mf.ChangeHiddenOnStartupProperty(checkBox2.Checked);
+            mf.ChangeSchemePublicInfo(schemesListBox.SelectedItem.ToString());
+            mf.ChangeAutoConvertClipboardContentProperty(convertClipboardWithHotkeyCheckBox.Checked);
+            mf.ChangeHiddenOnStartupProperty(hiddenOnLaunchCheckBox.Checked);
             mf.SaveSettings(selectedLanguage);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void okButton_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            if (schemesListBox.SelectedItem != null)
             {
                 ApplySettings();
                 this.Close();
@@ -81,54 +81,54 @@ namespace DiacriticBuster
                 ShowNoSchemeSelectedMessageBox();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void applyButton_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            if (schemesListBox.SelectedItem != null)
                 ApplySettings();
             else
                 ShowNoSchemeSelectedMessageBox();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void schemesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex == 0)
-                button4.Enabled = false;
+            if (schemesListBox.SelectedIndex == 0)
+                removeButton.Enabled = false;
             else
-                button4.Enabled = true;
+                removeButton.Enabled = true;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void englishRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (englishRadioButton.Checked)
                 selectedLanguage = "en-CA";
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void polskiRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
+            if (polskiRadioButton.Checked)
                 selectedLanguage = "pl-PL";
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void deutschRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton3.Checked)
+            if (deutschRadioButton.Checked)
                 selectedLanguage = "de-DE";
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void removeButton_Click(object sender, EventArgs e)
         {
-            string schemeFileLocation = mf.ReturnSchemesDirectoryName() + listBox1.SelectedItem.ToString() + ".txt";
+            string schemeFileLocation = mf.ReturnSchemesDirectoryName() + schemesListBox.SelectedItem.ToString() + ".txt";
             if (File.Exists(schemeFileLocation))
                 File.Delete(schemeFileLocation);
-            listBox1.Items.Remove(listBox1.SelectedItem);
+            schemesListBox.Items.Remove(schemesListBox.SelectedItem);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void importButton_Click(object sender, EventArgs e)
         {
             var FD = new System.Windows.Forms.OpenFileDialog();
             FD.DefaultExt = "txt";
@@ -167,7 +167,7 @@ namespace DiacriticBuster
                         {
                             File.Copy(FD.FileName, destinationFileName);
                             if (File.Exists(destinationFileName))
-                                listBox1.Items.Add(FD.SafeFileName.Split('.')[0]);
+                                schemesListBox.Items.Add(FD.SafeFileName.Split('.')[0]);
                         }
                     }
                     else

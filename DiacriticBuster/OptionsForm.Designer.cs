@@ -29,149 +29,150 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsForm));
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.schemesListBox = new System.Windows.Forms.ListBox();
+            this.availableSchemesLabel = new System.Windows.Forms.Label();
+            this.okButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.languagesGroupBox = new System.Windows.Forms.GroupBox();
+            this.deutschRadioButton = new System.Windows.Forms.RadioButton();
+            this.polskiRadioButton = new System.Windows.Forms.RadioButton();
+            this.englishRadioButton = new System.Windows.Forms.RadioButton();
+            this.applyButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
+            this.importButton = new System.Windows.Forms.Button();
+            this.generalSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.hiddenOnLaunchCheckBox = new System.Windows.Forms.CheckBox();
+            this.convertClipboardWithHotkeyCheckBox = new System.Windows.Forms.CheckBox();
+            this.languagesGroupBox.SuspendLayout();
+            this.generalSettingsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBox1
+            // schemesListBox
             // 
-            resources.ApplyResources(this.listBox1, "listBox1");
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            resources.ApplyResources(this.schemesListBox, "schemesListBox");
+            this.schemesListBox.FormattingEnabled = true;
+            this.schemesListBox.Name = "schemesListBox";
+            this.schemesListBox.SelectedIndexChanged += new System.EventHandler(this.schemesListBox_SelectedIndexChanged);
             // 
-            // label1
+            // availableSchemesLabel
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.availableSchemesLabel, "availableSchemesLabel");
+            this.availableSchemesLabel.Name = "availableSchemesLabel";
             // 
-            // button1
+            // okButton
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.okButton, "okButton");
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Name = "okButton";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
-            // button2
+            // cancelButton
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            resources.ApplyResources(this.cancelButton, "cancelButton");
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // groupBox1
+            // languagesGroupBox
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(this.languagesGroupBox, "languagesGroupBox");
+            this.languagesGroupBox.Controls.Add(this.deutschRadioButton);
+            this.languagesGroupBox.Controls.Add(this.polskiRadioButton);
+            this.languagesGroupBox.Controls.Add(this.englishRadioButton);
+            this.languagesGroupBox.Name = "languagesGroupBox";
+            this.languagesGroupBox.TabStop = false;
             // 
-            // radioButton3
+            // deutschRadioButton
             // 
-            resources.ApplyResources(this.radioButton3, "radioButton3");
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.TabStop = true;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            resources.ApplyResources(this.deutschRadioButton, "deutschRadioButton");
+            this.deutschRadioButton.Name = "deutschRadioButton";
+            this.deutschRadioButton.TabStop = true;
+            this.deutschRadioButton.UseVisualStyleBackColor = true;
+            this.deutschRadioButton.CheckedChanged += new System.EventHandler(this.deutschRadioButton_CheckedChanged);
             // 
-            // radioButton2
+            // polskiRadioButton
             // 
-            resources.ApplyResources(this.radioButton2, "radioButton2");
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.TabStop = true;
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            resources.ApplyResources(this.polskiRadioButton, "polskiRadioButton");
+            this.polskiRadioButton.Name = "polskiRadioButton";
+            this.polskiRadioButton.TabStop = true;
+            this.polskiRadioButton.UseVisualStyleBackColor = true;
+            this.polskiRadioButton.CheckedChanged += new System.EventHandler(this.polskiRadioButton_CheckedChanged);
             // 
-            // radioButton1
+            // englishRadioButton
             // 
-            resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            resources.ApplyResources(this.englishRadioButton, "englishRadioButton");
+            this.englishRadioButton.Name = "englishRadioButton";
+            this.englishRadioButton.TabStop = true;
+            this.englishRadioButton.UseVisualStyleBackColor = true;
+            this.englishRadioButton.CheckedChanged += new System.EventHandler(this.englishRadioButton_CheckedChanged);
             // 
-            // button3
+            // applyButton
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.applyButton, "applyButton");
+            this.applyButton.Name = "applyButton";
+            this.applyButton.UseVisualStyleBackColor = true;
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
-            // button4
+            // removeButton
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            resources.ApplyResources(this.removeButton, "removeButton");
+            this.removeButton.Name = "removeButton";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
-            // button5
+            // importButton
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            resources.ApplyResources(this.importButton, "importButton");
+            this.importButton.Name = "importButton";
+            this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
-            // groupBox2
+            // generalSettingsGroupBox
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(this.generalSettingsGroupBox, "generalSettingsGroupBox");
+            this.generalSettingsGroupBox.Controls.Add(this.hiddenOnLaunchCheckBox);
+            this.generalSettingsGroupBox.Controls.Add(this.convertClipboardWithHotkeyCheckBox);
+            this.generalSettingsGroupBox.Name = "generalSettingsGroupBox";
+            this.generalSettingsGroupBox.TabStop = false;
             // 
-            // checkBox2
+            // hiddenOnLaunchCheckBox
             // 
-            resources.ApplyResources(this.checkBox2, "checkBox2");
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.hiddenOnLaunchCheckBox, "hiddenOnLaunchCheckBox");
+            this.hiddenOnLaunchCheckBox.Name = "hiddenOnLaunchCheckBox";
+            this.hiddenOnLaunchCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // convertClipboardWithHotkeyCheckBox
             // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.convertClipboardWithHotkeyCheckBox, "convertClipboardWithHotkeyCheckBox");
+            this.convertClipboardWithHotkeyCheckBox.Name = "convertClipboardWithHotkeyCheckBox";
+            this.convertClipboardWithHotkeyCheckBox.UseVisualStyleBackColor = true;
             // 
             // OptionsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button2;
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.CancelButton = this.cancelButton;
+            this.Controls.Add(this.generalSettingsGroupBox);
+            this.Controls.Add(this.importButton);
+            this.Controls.Add(this.removeButton);
+            this.Controls.Add(this.applyButton);
+            this.Controls.Add(this.languagesGroupBox);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.availableSchemesLabel);
+            this.Controls.Add(this.schemesListBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OptionsForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.languagesGroupBox.ResumeLayout(false);
+            this.languagesGroupBox.PerformLayout();
+            this.generalSettingsGroupBox.ResumeLayout(false);
+            this.generalSettingsGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,19 +180,19 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ListBox schemesListBox;
+        private System.Windows.Forms.Label availableSchemesLabel;
+        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.GroupBox languagesGroupBox;
+        private System.Windows.Forms.RadioButton deutschRadioButton;
+        private System.Windows.Forms.RadioButton polskiRadioButton;
+        private System.Windows.Forms.RadioButton englishRadioButton;
+        private System.Windows.Forms.Button applyButton;
+        private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Button importButton;
+        private System.Windows.Forms.GroupBox generalSettingsGroupBox;
+        private System.Windows.Forms.CheckBox hiddenOnLaunchCheckBox;
+        private System.Windows.Forms.CheckBox convertClipboardWithHotkeyCheckBox;
     }
 }

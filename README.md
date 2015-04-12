@@ -1,4 +1,4 @@
-# Diacritic Buster #
+﻿# Diacritic Buster #
 
 This program can help you get rid of incompatible characters found in any piece of text using their alternative or simplified forms instead to be processable by any target reading software that is simply not able to deal with their original equivalents. It was written in C# and uses Window Forms as the user interface. Runs in 32- or 64-bit mode depending on the system environment.
 
@@ -14,7 +14,7 @@ Diacritic Buster allows to change the following settings:
 
 * Convert Clipboard content automatically with the Alt+C hotkey combination – until there is a text inside the system Clipboard, it can be converted using currently chosen scheme. This allows you to use the program without having to switch between applications.
 
-* Program hidden on start-up – after start-up, the program is hidden in the system tray. To restore it, one needs to double-click the left mouse button on the program's icon or press the right mouse button and from the context menu, select "Hide/restore".
+* Program hidden on launch – after launching, the program is hidden in the system tray. To restore it, one needs to double-click the left mouse button on the program's icon or press the right mouse button and from the context menu, select "Hide/restore".
 
 * Available schemes – the list of schemes you are able to use. The following ones are originally included with the program, thus they are ready to use: Alternate German accents, Convert Romaji text to Katakana, Make Hungarian compatible with Western European set, Remove all Central European specific accents only, Remove Polish accents except o-acute, Remove Polish accents, Romanise Katakana letters, Romanise Russian letters the GOST 2002(B) method.
 

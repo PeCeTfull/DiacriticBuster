@@ -118,40 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="availableSchemesLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 13</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="availableSchemesLabel.Text" xml:space="preserve">
     <value>Dostępne schematy: </value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
+  <data name="cancelButton.Text" xml:space="preserve">
     <value>&amp;Anuluj</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="languagesGroupBox.Text" xml:space="preserve">
     <value>Języki</value>
   </data>
-  <data name="button3.Text" xml:space="preserve">
+  <data name="applyButton.Text" xml:space="preserve">
     <value>&amp;Zastosuj</value>
   </data>
-  <data name="button4.Text" xml:space="preserve">
+  <data name="removeButton.Text" xml:space="preserve">
     <value>&amp;Usuń</value>
   </data>
-  <data name="button5.Text" xml:space="preserve">
+  <data name="importButton.Text" xml:space="preserve">
     <value>&amp;Importuj</value>
   </data>
-  <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="hiddenOnLaunchCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 17</value>
   </data>
-  <data name="checkBox2.Text" xml:space="preserve">
+  <data name="hiddenOnLaunchCheckBox.Text" xml:space="preserve">
     <value>Program ukryty po uruchomieniu</value>
   </data>
-  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="convertClipboardWithHotkeyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>379, 17</value>
   </data>
-  <data name="checkBox1.Text" xml:space="preserve">
+  <data name="convertClipboardWithHotkeyCheckBox.Text" xml:space="preserve">
     <value>Konwertuj zawartość Schowka automatycznie za pomocą kombinacji Alt+C</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="generalSettingsGroupBox.Text" xml:space="preserve">
     <value>Ustawienia ogólne</value>
   </data>
   <data name="$this.Text" xml:space="preserve">

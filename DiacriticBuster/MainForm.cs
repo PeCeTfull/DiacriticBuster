@@ -66,7 +66,7 @@ namespace DiacriticBuster
                         {
                             currentDiacriticDealingMethods.Add(diacriticRule[0], diacriticRule[1]);
                         }
-                        catch (ArgumentException) // happens mostly when the key is already added to the dictionary - when it repeats, it's simply omitted
+                        catch (ArgumentException) // happens mostly when the key is already added to the dictionary – when it repeats, it's simply omitted
                         {
                             if (!isAnyKeyRepeated)
                             {
@@ -92,7 +92,7 @@ namespace DiacriticBuster
                 crm.ApplyResources(c, c.Name, new CultureInfo(chosenLanguage));
             }
             currentLanguage = chosenLanguage;
-            currentSchemeBasicStringLength = this.label3.Text.Length;
+            currentSchemeBasicStringLength = this.currentSchemeLabel.Text.Length;
             if (currentLanguage.IndexOf("pl") > -1)
             {
                 englishToolStripMenuItem.Checked = false;
@@ -160,8 +160,8 @@ namespace DiacriticBuster
                 englishToolStripMenuItem.Checked = true;
 
             LoadScheme();
-            currentSchemeBasicStringLength = this.label3.Text.Length;
-            this.label3.Text += currentScheme;
+            currentSchemeBasicStringLength = this.currentSchemeLabel.Text.Length;
+            this.currentSchemeLabel.Text += currentScheme;
 
             if (autoConvertClipboardContentOnAltC)
             {
@@ -172,7 +172,7 @@ namespace DiacriticBuster
             if (!hiddenOnStartup)
                 this.allowShowDisplay = true;
             else
-                hiddenOnStartupToolStripMenuItem.Checked = true;
+                hiddenOnLaunchToolStripMenuItem.Checked = true;
         }
 
         public string ReturnSchemesDirectoryName()
@@ -197,14 +197,14 @@ namespace DiacriticBuster
 
         public void ChangeSchemePublicInfo(string switchedScheme)
         {
-            label3.Text = label3.Text.Substring(0, currentSchemeBasicStringLength);
+            currentSchemeLabel.Text = currentSchemeLabel.Text.Substring(0, currentSchemeBasicStringLength);
             currentScheme = switchedScheme;
             string schemeName;
             if (currentScheme.Length > 52)
                 schemeName = currentScheme.Substring(0, 50) + "...";
             else
                 schemeName = currentScheme;
-            label3.Text += schemeName;
+            currentSchemeLabel.Text += schemeName;
             LoadScheme();
         }
 
@@ -221,7 +221,7 @@ namespace DiacriticBuster
         public void ChangeHiddenOnStartupProperty(bool switchedProperty)
         {
             hiddenOnStartup = switchedProperty;
-            hiddenOnStartupToolStripMenuItem.Checked = switchedProperty;
+            hiddenOnLaunchToolStripMenuItem.Checked = switchedProperty;
         }
 
         public void SaveSettings(string chosenLanguage)
@@ -235,7 +235,7 @@ namespace DiacriticBuster
                 sw.WriteLine("; Don't modify this file manually! Nie modyfikować tego pliku ręcznie! Modifizieren Sie nicht diese Datei manuell!\r\n[" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductName + "]\r\nLanguage=" + chosenLanguage + "\r\nScheme=" + scheme + "\r\nAutoConvertClipboardContentOnAltC=" + Convert.ToInt16(autoConvertClipboardContentOnAltC) + "\r\nHiddenOnStartup=" + Convert.ToInt16(hiddenOnStartup)); // rewriting the configuration into the file using UTF-8 conversion
                 sw.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show(String.Format(Properties.Resources.CannotOverwriteConfigFileMessage, configFileName), Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
@@ -310,11 +310,11 @@ namespace DiacriticBuster
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void convertButton_Click(object sender, EventArgs e)
         {
-            string textToConvert = textBox1.Text;
-            textBox2.Text = "";
-            textBox2.Text = ConvertText(textToConvert);
+            string textToConvert = initialTextBox.Text;
+            finalTextBox.Text = "";
+            finalTextBox.Text = ConvertText(textToConvert);
         }
 
         OptionsForm of;
@@ -337,12 +337,12 @@ namespace DiacriticBuster
             ab.ShowDialog(this);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void optionsButton_Click(object sender, EventArgs e)
         {
             ShowProgramOptions();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void aboutButton_Click(object sender, EventArgs e)
         {
             ShowAboutBox();
         }
@@ -389,6 +389,11 @@ namespace DiacriticBuster
 
         private void moreOptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (this.allowShowDisplay == false)
+            {
+                this.allowShowDisplay = true;
+                this.Visible = !this.Visible;
+            }
             ShowProgramOptions();
         }
 
@@ -437,9 +442,9 @@ namespace DiacriticBuster
             SaveSettings(currentLanguage);
         }
 
-        private void hiddenOnStartupToolStripMenuItem_Click(object sender, EventArgs e)
+        private void hiddenOnLaunchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeHiddenOnStartupProperty(!hiddenOnStartupToolStripMenuItem.Checked);
+            ChangeHiddenOnStartupProperty(!hiddenOnLaunchToolStripMenuItem.Checked);
             SaveSettings(currentLanguage);
         }
     }

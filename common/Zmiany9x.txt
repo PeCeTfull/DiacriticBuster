@@ -1,6 +1,11 @@
 Spis zmian programu Diacritic Buster
 
-1.2.x.x (#TUPODAJDATÊWYDANIA): 
+1.3.x.x (#TUPODAJDATÊWYDANIA): 
+* zdanie „Program hidden on start-up” zmieniono na „Program hidden on launch”; 
+* poprawiona kolejnoœæ tabulacji w oknie opcji; 
+* naprawiono problem z wyœwietlaniem okna opcji wystêpuj¹cym, kiedy program by³ ustawiony na bycie ukrytym po uruchomieniu.
+
+1.2.5551.22763 (14.III.2015): 
 * poprawiono schemat „Convert Romaji text to Katakana”; 
 * usuniêto b³¹d skrótu klawiaturowego Alt+C z brakuj¹cym tekstem w Schowku; 
 * pojawia siê stosowne okno z b³êdem, gdy plik DiacriticBuster.ini nie mo¿e byæ utworzony ani nadpisany; 
