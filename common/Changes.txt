@@ -1,6 +1,9 @@
 The changelog of Diacritic Buster
 
 1.3.x.x (#PUTTHERELEASEDATEHERE): 
+* improved the behaviour of OK button in the options window.
+
+1.3.5580.33937 (2015-04-12): 
 * the sentence "Program hidden on start-up" changed to "Program hidden on launch"; 
 * fixed TAB order in the program options window; 
 * fixed the issue with displaying options window occuring when the program was set to be hidden on launch.

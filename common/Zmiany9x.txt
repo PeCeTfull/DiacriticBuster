@@ -1,6 +1,9 @@
 Spis zmian programu Diacritic Buster
 
 1.3.x.x (#TUPODAJDATÊWYDANIA): 
+* usprawniono zachowanie siê przycisku OK w oknie opcji.
+
+1.3.5580.33937 (12.IV.2015): 
 * zdanie „Program hidden on start-up” zmieniono na „Program hidden on launch”; 
 * poprawiona kolejnoœæ tabulacji w oknie opcji; 
 * naprawiono problem z wyœwietlaniem okna opcji wystêpuj¹cym, kiedy program by³ ustawiony na bycie ukrytym po uruchomieniu.

@@ -49,8 +49,8 @@
             // 
             // schemesListBox
             // 
-            resources.ApplyResources(this.schemesListBox, "schemesListBox");
             this.schemesListBox.FormattingEnabled = true;
+            resources.ApplyResources(this.schemesListBox, "schemesListBox");
             this.schemesListBox.Name = "schemesListBox";
             this.schemesListBox.SelectedIndexChanged += new System.EventHandler(this.schemesListBox_SelectedIndexChanged);
             // 
@@ -61,26 +61,26 @@
             // 
             // okButton
             // 
-            resources.ApplyResources(this.okButton, "okButton");
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.okButton, "okButton");
             this.okButton.Name = "okButton";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // languagesGroupBox
             // 
-            resources.ApplyResources(this.languagesGroupBox, "languagesGroupBox");
             this.languagesGroupBox.Controls.Add(this.deutschRadioButton);
             this.languagesGroupBox.Controls.Add(this.polskiRadioButton);
             this.languagesGroupBox.Controls.Add(this.englishRadioButton);
+            resources.ApplyResources(this.languagesGroupBox, "languagesGroupBox");
             this.languagesGroupBox.Name = "languagesGroupBox";
             this.languagesGroupBox.TabStop = false;
             // 
@@ -131,9 +131,9 @@
             // 
             // generalSettingsGroupBox
             // 
-            resources.ApplyResources(this.generalSettingsGroupBox, "generalSettingsGroupBox");
             this.generalSettingsGroupBox.Controls.Add(this.hiddenOnLaunchCheckBox);
             this.generalSettingsGroupBox.Controls.Add(this.convertClipboardWithHotkeyCheckBox);
+            resources.ApplyResources(this.generalSettingsGroupBox, "generalSettingsGroupBox");
             this.generalSettingsGroupBox.Name = "generalSettingsGroupBox";
             this.generalSettingsGroupBox.TabStop = false;
             // 
@@ -151,6 +151,7 @@
             // 
             // OptionsForm
             // 
+            this.AcceptButton = this.okButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
