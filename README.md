@@ -29,3 +29,9 @@ Visual Studio 2012 due to the ability to handle .NET Framework 2.0 and its newer
 ### Program licence ###
 
 Diacritic Buster is published under The MIT License. Please refer to the LICENSE.txt file of this repository for more information regarding it.
+
+### Screenshots ###
+
+<img width="676" height="338" alt="The main window of Diacritic Buster" src="https://github.com/user-attachments/assets/d43f6e23-b7b1-4e1e-b1b6-e5947b9775e3" />
+
+<img width="262" height="127" alt="Diacritic Buster hidden in the system tray" src="https://github.com/user-attachments/assets/232a28c0-c2d6-4507-af51-937de347cf25" />
